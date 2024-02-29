@@ -28,101 +28,104 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.AddPartButton = new System.Windows.Forms.Button();
+            this.ModifyPartButton = new System.Windows.Forms.Button();
+            this.DeletePartButton = new System.Windows.Forms.Button();
+            this.PartsSearchButton = new System.Windows.Forms.Button();
+            this.PartsDataGrid = new System.Windows.Forms.DataGridView();
             this.mainScreenLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PartsSearchBox = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.ProductsSearchBox = new System.Windows.Forms.TextBox();
+            this.ProductsDataGridView = new System.Windows.Forms.DataGridView();
+            this.AddProductButton = new System.Windows.Forms.Button();
+            this.ModifyProductButton = new System.Windows.Forms.Button();
+            this.ProductsSearchButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.DeleteProductButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // AddPartButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(261, 310);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddPartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddPartButton.Location = new System.Drawing.Point(261, 310);
+            this.AddPartButton.Name = "AddPartButton";
+            this.AddPartButton.Size = new System.Drawing.Size(90, 40);
+            this.AddPartButton.TabIndex = 0;
+            this.AddPartButton.Text = "Add";
+            this.AddPartButton.UseVisualStyleBackColor = true;
+            this.AddPartButton.Click += new System.EventHandler(this.AddPartButton_Click);
             // 
-            // button2
+            // ModifyPartButton
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(357, 310);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 40);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ModifyPartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ModifyPartButton.Location = new System.Drawing.Point(357, 310);
+            this.ModifyPartButton.Name = "ModifyPartButton";
+            this.ModifyPartButton.Size = new System.Drawing.Size(90, 40);
+            this.ModifyPartButton.TabIndex = 1;
+            this.ModifyPartButton.Text = "Modify";
+            this.ModifyPartButton.UseVisualStyleBackColor = true;
+            this.ModifyPartButton.Click += new System.EventHandler(this.ModifyPartButton_Click);
             // 
-            // button3
+            // DeletePartButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(453, 310);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 40);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.DeletePartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeletePartButton.Location = new System.Drawing.Point(453, 310);
+            this.DeletePartButton.Name = "DeletePartButton";
+            this.DeletePartButton.Size = new System.Drawing.Size(90, 40);
+            this.DeletePartButton.TabIndex = 2;
+            this.DeletePartButton.Text = "Delete";
+            this.DeletePartButton.UseVisualStyleBackColor = true;
+            this.DeletePartButton.Click += new System.EventHandler(this.DeletePartButton_Click);
             // 
-            // button7
+            // PartsSearchButton
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(257, 5);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(80, 26);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Search";
-            this.button7.UseVisualStyleBackColor = true;
+            this.PartsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PartsSearchButton.Location = new System.Drawing.Point(257, 5);
+            this.PartsSearchButton.Name = "PartsSearchButton";
+            this.PartsSearchButton.Size = new System.Drawing.Size(80, 26);
+            this.PartsSearchButton.TabIndex = 7;
+            this.PartsSearchButton.Text = "Search";
+            this.PartsSearchButton.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // PartsDataGrid
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PartsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 43);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(199, 9, 119, 9);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(540, 255);
-            this.dataGridView1.TabIndex = 9;
+            this.PartsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PartsDataGrid.Location = new System.Drawing.Point(3, 43);
+            this.PartsDataGrid.Margin = new System.Windows.Forms.Padding(199, 9, 119, 9);
+            this.PartsDataGrid.Name = "PartsDataGrid";
+            this.PartsDataGrid.RowHeadersWidth = 51;
+            this.PartsDataGrid.Size = new System.Drawing.Size(540, 255);
+            this.PartsDataGrid.TabIndex = 9;
             // 
             // mainScreenLabel
             // 
             this.mainScreenLabel.AutoSize = true;
-            this.mainScreenLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainScreenLabel.Location = new System.Drawing.Point(29, 9);
+            this.mainScreenLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainScreenLabel.Location = new System.Drawing.Point(12, 9);
             this.mainScreenLabel.Name = "mainScreenLabel";
-            this.mainScreenLabel.Size = new System.Drawing.Size(211, 18);
+            this.mainScreenLabel.Size = new System.Drawing.Size(255, 22);
             this.mainScreenLabel.TabIndex = 11;
             this.mainScreenLabel.Text = "Inventory Management System";
             // 
-            // textBox1
+            // PartsSearchBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(343, 3);
-            this.textBox1.MinimumSize = new System.Drawing.Size(200, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 28);
-            this.textBox1.TabIndex = 14;
+            this.PartsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PartsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PartsSearchBox.Location = new System.Drawing.Point(343, 3);
+            this.PartsSearchBox.MinimumSize = new System.Drawing.Size(200, 22);
+            this.PartsSearchBox.Name = "PartsSearchBox";
+            this.PartsSearchBox.Size = new System.Drawing.Size(200, 28);
+            this.PartsSearchBox.TabIndex = 14;
             // 
             // splitContainer1
             // 
@@ -134,99 +137,102 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.button2);
-            this.splitContainer1.Panel1.Controls.Add(this.button3);
-            this.splitContainer1.Panel1.Controls.Add(this.button7);
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel1.Controls.Add(this.PartsSearchBox);
+            this.splitContainer1.Panel1.Controls.Add(this.AddPartButton);
+            this.splitContainer1.Panel1.Controls.Add(this.ModifyPartButton);
+            this.splitContainer1.Panel1.Controls.Add(this.DeletePartButton);
+            this.splitContainer1.Panel1.Controls.Add(this.PartsSearchButton);
+            this.splitContainer1.Panel1.Controls.Add(this.PartsDataGrid);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView2);
-            this.splitContainer1.Panel2.Controls.Add(this.button4);
-            this.splitContainer1.Panel2.Controls.Add(this.button5);
-            this.splitContainer1.Panel2.Controls.Add(this.button8);
-            this.splitContainer1.Panel2.Controls.Add(this.exitButton);
-            this.splitContainer1.Panel2.Controls.Add(this.button6);
+            this.splitContainer1.Panel2.Controls.Add(this.ProductsSearchBox);
+            this.splitContainer1.Panel2.Controls.Add(this.ProductsDataGridView);
+            this.splitContainer1.Panel2.Controls.Add(this.AddProductButton);
+            this.splitContainer1.Panel2.Controls.Add(this.ModifyProductButton);
+            this.splitContainer1.Panel2.Controls.Add(this.ProductsSearchButton);
+            this.splitContainer1.Panel2.Controls.Add(this.ExitButton);
+            this.splitContainer1.Panel2.Controls.Add(this.DeleteProductButton);
             this.splitContainer1.Size = new System.Drawing.Size(1100, 400);
             this.splitContainer1.SplitterDistance = 550;
             this.splitContainer1.TabIndex = 15;
             // 
-            // textBox2
+            // ProductsSearchBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(343, 3);
-            this.textBox2.MinimumSize = new System.Drawing.Size(200, 22);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 28);
-            this.textBox2.TabIndex = 22;
+            this.ProductsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProductsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductsSearchBox.Location = new System.Drawing.Point(343, 3);
+            this.ProductsSearchBox.MinimumSize = new System.Drawing.Size(200, 22);
+            this.ProductsSearchBox.Name = "ProductsSearchBox";
+            this.ProductsSearchBox.Size = new System.Drawing.Size(200, 28);
+            this.ProductsSearchBox.TabIndex = 22;
             // 
-            // dataGridView2
+            // ProductsDataGridView
             // 
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ProductsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 43);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(540, 255);
-            this.dataGridView2.TabIndex = 21;
+            this.ProductsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ProductsDataGridView.Location = new System.Drawing.Point(3, 43);
+            this.ProductsDataGridView.Name = "ProductsDataGridView";
+            this.ProductsDataGridView.RowHeadersWidth = 51;
+            this.ProductsDataGridView.Size = new System.Drawing.Size(540, 255);
+            this.ProductsDataGridView.TabIndex = 21;
             // 
-            // button4
+            // AddProductButton
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(264, 310);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 40);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.AddProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddProductButton.Location = new System.Drawing.Point(264, 310);
+            this.AddProductButton.Name = "AddProductButton";
+            this.AddProductButton.Size = new System.Drawing.Size(90, 40);
+            this.AddProductButton.TabIndex = 16;
+            this.AddProductButton.Text = "Add";
+            this.AddProductButton.UseVisualStyleBackColor = true;
+            this.AddProductButton.Click += new System.EventHandler(this.AddProductButton_Click);
             // 
-            // button5
+            // ModifyProductButton
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(360, 310);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(90, 40);
-            this.button5.TabIndex = 17;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.ModifyProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ModifyProductButton.Location = new System.Drawing.Point(360, 310);
+            this.ModifyProductButton.Name = "ModifyProductButton";
+            this.ModifyProductButton.Size = new System.Drawing.Size(90, 40);
+            this.ModifyProductButton.TabIndex = 17;
+            this.ModifyProductButton.Text = "Modify";
+            this.ModifyProductButton.UseVisualStyleBackColor = true;
+            this.ModifyProductButton.Click += new System.EventHandler(this.ModifyProductButton_Click);
             // 
-            // button8
+            // ProductsSearchButton
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.Location = new System.Drawing.Point(257, 5);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(80, 26);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "Search";
-            this.button8.UseVisualStyleBackColor = true;
+            this.ProductsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProductsSearchButton.Location = new System.Drawing.Point(257, 5);
+            this.ProductsSearchButton.Name = "ProductsSearchButton";
+            this.ProductsSearchButton.Size = new System.Drawing.Size(80, 26);
+            this.ProductsSearchButton.TabIndex = 7;
+            this.ProductsSearchButton.Text = "Search";
+            this.ProductsSearchButton.UseVisualStyleBackColor = true;
             // 
-            // exitButton
+            // ExitButton
             // 
-            this.exitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.exitButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.exitButton.Location = new System.Drawing.Point(493, 356);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(50, 40);
-            this.exitButton.TabIndex = 19;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ExitButton.Location = new System.Drawing.Point(493, 356);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(50, 40);
+            this.ExitButton.TabIndex = 19;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // button6
+            // DeleteProductButton
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(456, 310);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(90, 40);
-            this.button6.TabIndex = 18;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteProductButton.Location = new System.Drawing.Point(456, 310);
+            this.DeleteProductButton.Name = "DeleteProductButton";
+            this.DeleteProductButton.Size = new System.Drawing.Size(90, 40);
+            this.DeleteProductButton.TabIndex = 18;
+            this.DeleteProductButton.Text = "Del;ete";
+            this.DeleteProductButton.UseVisualStyleBackColor = true;
+            this.DeleteProductButton.Click += new System.EventHandler(this.DeleteProductButton_Click);
             // 
             // Main_Screen
             // 
@@ -238,14 +244,14 @@
             this.MinimumSize = new System.Drawing.Size(1145, 495);
             this.Name = "Main_Screen";
             this.Text = "Main Screen";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PartsDataGrid)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,20 +259,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button AddPartButton;
+        private System.Windows.Forms.Button ModifyPartButton;
+        private System.Windows.Forms.Button DeletePartButton;
+        private System.Windows.Forms.Button PartsSearchButton;
+        private System.Windows.Forms.DataGridView PartsDataGrid;
         private System.Windows.Forms.Label mainScreenLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PartsSearchBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox ProductsSearchBox;
+        private System.Windows.Forms.DataGridView ProductsDataGridView;
+        private System.Windows.Forms.Button AddProductButton;
+        private System.Windows.Forms.Button ModifyProductButton;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button DeleteProductButton;
+        private System.Windows.Forms.Button ProductsSearchButton;
     }
 }
