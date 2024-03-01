@@ -43,6 +43,8 @@
             this.ProductsSearchButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.DeleteProductButton = new System.Windows.Forms.Button();
+            this.PartLabel = new System.Windows.Forms.Label();
+            this.ProductLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PartsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -137,6 +139,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.PartLabel);
             this.splitContainer1.Panel1.Controls.Add(this.PartsSearchBox);
             this.splitContainer1.Panel1.Controls.Add(this.AddPartButton);
             this.splitContainer1.Panel1.Controls.Add(this.ModifyPartButton);
@@ -146,6 +149,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.ProductLabel);
             this.splitContainer1.Panel2.Controls.Add(this.ProductsSearchBox);
             this.splitContainer1.Panel2.Controls.Add(this.ProductsDataGridView);
             this.splitContainer1.Panel2.Controls.Add(this.AddProductButton);
@@ -234,6 +238,26 @@
             this.DeleteProductButton.UseVisualStyleBackColor = true;
             this.DeleteProductButton.Click += new System.EventHandler(this.DeleteProductButton_Click);
             // 
+            // PartLabel
+            // 
+            this.PartLabel.AutoSize = true;
+            this.PartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PartLabel.Location = new System.Drawing.Point(3, 10);
+            this.PartLabel.Name = "PartLabel";
+            this.PartLabel.Size = new System.Drawing.Size(68, 29);
+            this.PartLabel.TabIndex = 16;
+            this.PartLabel.Text = "Parts";
+            // 
+            // ProductLabel
+            // 
+            this.ProductLabel.AutoSize = true;
+            this.ProductLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductLabel.Location = new System.Drawing.Point(3, 10);
+            this.ProductLabel.Name = "ProductLabel";
+            this.ProductLabel.Size = new System.Drawing.Size(108, 29);
+            this.ProductLabel.TabIndex = 17;
+            this.ProductLabel.Text = "Products";
+            // 
             // Main_Screen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -274,5 +298,7 @@
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button DeleteProductButton;
         private System.Windows.Forms.Button ProductsSearchButton;
+        private System.Windows.Forms.Label PartLabel;
+        private System.Windows.Forms.Label ProductLabel;
     }
 }
