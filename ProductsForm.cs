@@ -15,6 +15,8 @@ namespace InventoryManager
         public ProductsForm()
         {
             InitializeComponent();
+            
         }
+
     }
 }
