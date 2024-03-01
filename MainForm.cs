@@ -30,7 +30,7 @@ namespace InventoryManager
 
         private void AddProductButton_Click(object sender, EventArgs e)
         {
-            PartsForm form = new PartsForm();
+            ProductsForm form = new ProductsForm();
             form.ShowDialog();
         }
 
