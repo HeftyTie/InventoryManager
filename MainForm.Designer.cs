@@ -31,20 +31,20 @@
             this.AddPartButton = new System.Windows.Forms.Button();
             this.ModifyPartButton = new System.Windows.Forms.Button();
             this.DeletePartButton = new System.Windows.Forms.Button();
-            this.PartsSearchButton = new System.Windows.Forms.Button();
+            this.mainPartsSearchButton = new System.Windows.Forms.Button();
             this.PartsDataGrid = new System.Windows.Forms.DataGridView();
             this.mainScreenLabel = new System.Windows.Forms.Label();
-            this.PartsSearchBox = new System.Windows.Forms.TextBox();
+            this.mainPartsSearchBox = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.ProductsSearchBox = new System.Windows.Forms.TextBox();
+            this.PartLabel = new System.Windows.Forms.Label();
+            this.ProductLabel = new System.Windows.Forms.Label();
+            this.mainProductsSearchBox = new System.Windows.Forms.TextBox();
             this.ProductsDataGridView = new System.Windows.Forms.DataGridView();
             this.AddProductButton = new System.Windows.Forms.Button();
             this.ModifyProductButton = new System.Windows.Forms.Button();
-            this.ProductsSearchButton = new System.Windows.Forms.Button();
+            this.mainProductsSearchButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.DeleteProductButton = new System.Windows.Forms.Button();
-            this.PartLabel = new System.Windows.Forms.Label();
-            this.ProductLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PartsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -86,15 +86,15 @@
             this.DeletePartButton.UseVisualStyleBackColor = true;
             this.DeletePartButton.Click += new System.EventHandler(this.DeletePartButton_Click);
             // 
-            // PartsSearchButton
+            // mainPartsSearchButton
             // 
-            this.PartsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PartsSearchButton.Location = new System.Drawing.Point(257, 5);
-            this.PartsSearchButton.Name = "PartsSearchButton";
-            this.PartsSearchButton.Size = new System.Drawing.Size(80, 26);
-            this.PartsSearchButton.TabIndex = 7;
-            this.PartsSearchButton.Text = "Search";
-            this.PartsSearchButton.UseVisualStyleBackColor = true;
+            this.mainPartsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPartsSearchButton.Location = new System.Drawing.Point(257, 5);
+            this.mainPartsSearchButton.Name = "mainPartsSearchButton";
+            this.mainPartsSearchButton.Size = new System.Drawing.Size(80, 26);
+            this.mainPartsSearchButton.TabIndex = 7;
+            this.mainPartsSearchButton.Text = "Search";
+            this.mainPartsSearchButton.UseVisualStyleBackColor = true;
             // 
             // PartsDataGrid
             // 
@@ -119,15 +119,15 @@
             this.mainScreenLabel.TabIndex = 11;
             this.mainScreenLabel.Text = "Inventory Management System";
             // 
-            // PartsSearchBox
+            // mainPartsSearchBox
             // 
-            this.PartsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PartsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PartsSearchBox.Location = new System.Drawing.Point(343, 3);
-            this.PartsSearchBox.MinimumSize = new System.Drawing.Size(200, 22);
-            this.PartsSearchBox.Name = "PartsSearchBox";
-            this.PartsSearchBox.Size = new System.Drawing.Size(200, 28);
-            this.PartsSearchBox.TabIndex = 14;
+            this.mainPartsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPartsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainPartsSearchBox.Location = new System.Drawing.Point(343, 3);
+            this.mainPartsSearchBox.MinimumSize = new System.Drawing.Size(200, 22);
+            this.mainPartsSearchBox.Name = "mainPartsSearchBox";
+            this.mainPartsSearchBox.Size = new System.Drawing.Size(200, 28);
+            this.mainPartsSearchBox.TabIndex = 14;
             // 
             // splitContainer1
             // 
@@ -140,36 +140,56 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.PartLabel);
-            this.splitContainer1.Panel1.Controls.Add(this.PartsSearchBox);
+            this.splitContainer1.Panel1.Controls.Add(this.mainPartsSearchBox);
             this.splitContainer1.Panel1.Controls.Add(this.AddPartButton);
             this.splitContainer1.Panel1.Controls.Add(this.ModifyPartButton);
             this.splitContainer1.Panel1.Controls.Add(this.DeletePartButton);
-            this.splitContainer1.Panel1.Controls.Add(this.PartsSearchButton);
+            this.splitContainer1.Panel1.Controls.Add(this.mainPartsSearchButton);
             this.splitContainer1.Panel1.Controls.Add(this.PartsDataGrid);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.ProductLabel);
-            this.splitContainer1.Panel2.Controls.Add(this.ProductsSearchBox);
+            this.splitContainer1.Panel2.Controls.Add(this.mainProductsSearchBox);
             this.splitContainer1.Panel2.Controls.Add(this.ProductsDataGridView);
             this.splitContainer1.Panel2.Controls.Add(this.AddProductButton);
             this.splitContainer1.Panel2.Controls.Add(this.ModifyProductButton);
-            this.splitContainer1.Panel2.Controls.Add(this.ProductsSearchButton);
+            this.splitContainer1.Panel2.Controls.Add(this.mainProductsSearchButton);
             this.splitContainer1.Panel2.Controls.Add(this.ExitButton);
             this.splitContainer1.Panel2.Controls.Add(this.DeleteProductButton);
             this.splitContainer1.Size = new System.Drawing.Size(1100, 400);
             this.splitContainer1.SplitterDistance = 550;
             this.splitContainer1.TabIndex = 15;
             // 
-            // ProductsSearchBox
+            // PartLabel
             // 
-            this.ProductsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProductsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductsSearchBox.Location = new System.Drawing.Point(343, 3);
-            this.ProductsSearchBox.MinimumSize = new System.Drawing.Size(200, 22);
-            this.ProductsSearchBox.Name = "ProductsSearchBox";
-            this.ProductsSearchBox.Size = new System.Drawing.Size(200, 28);
-            this.ProductsSearchBox.TabIndex = 22;
+            this.PartLabel.AutoSize = true;
+            this.PartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PartLabel.Location = new System.Drawing.Point(3, 10);
+            this.PartLabel.Name = "PartLabel";
+            this.PartLabel.Size = new System.Drawing.Size(68, 29);
+            this.PartLabel.TabIndex = 16;
+            this.PartLabel.Text = "Parts";
+            // 
+            // ProductLabel
+            // 
+            this.ProductLabel.AutoSize = true;
+            this.ProductLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProductLabel.Location = new System.Drawing.Point(3, 10);
+            this.ProductLabel.Name = "ProductLabel";
+            this.ProductLabel.Size = new System.Drawing.Size(108, 29);
+            this.ProductLabel.TabIndex = 17;
+            this.ProductLabel.Text = "Products";
+            // 
+            // mainProductsSearchBox
+            // 
+            this.mainProductsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainProductsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainProductsSearchBox.Location = new System.Drawing.Point(343, 3);
+            this.mainProductsSearchBox.MinimumSize = new System.Drawing.Size(200, 22);
+            this.mainProductsSearchBox.Name = "mainProductsSearchBox";
+            this.mainProductsSearchBox.Size = new System.Drawing.Size(200, 28);
+            this.mainProductsSearchBox.TabIndex = 22;
             // 
             // ProductsDataGridView
             // 
@@ -205,15 +225,15 @@
             this.ModifyProductButton.UseVisualStyleBackColor = true;
             this.ModifyProductButton.Click += new System.EventHandler(this.ModifyProductButton_Click);
             // 
-            // ProductsSearchButton
+            // mainProductsSearchButton
             // 
-            this.ProductsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProductsSearchButton.Location = new System.Drawing.Point(257, 5);
-            this.ProductsSearchButton.Name = "ProductsSearchButton";
-            this.ProductsSearchButton.Size = new System.Drawing.Size(80, 26);
-            this.ProductsSearchButton.TabIndex = 7;
-            this.ProductsSearchButton.Text = "Search";
-            this.ProductsSearchButton.UseVisualStyleBackColor = true;
+            this.mainProductsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainProductsSearchButton.Location = new System.Drawing.Point(257, 5);
+            this.mainProductsSearchButton.Name = "mainProductsSearchButton";
+            this.mainProductsSearchButton.Size = new System.Drawing.Size(80, 26);
+            this.mainProductsSearchButton.TabIndex = 7;
+            this.mainProductsSearchButton.Text = "Search";
+            this.mainProductsSearchButton.UseVisualStyleBackColor = true;
             // 
             // ExitButton
             // 
@@ -234,29 +254,9 @@
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(90, 40);
             this.DeleteProductButton.TabIndex = 18;
-            this.DeleteProductButton.Text = "Del;ete";
+            this.DeleteProductButton.Text = "Delete";
             this.DeleteProductButton.UseVisualStyleBackColor = true;
             this.DeleteProductButton.Click += new System.EventHandler(this.DeleteProductButton_Click);
-            // 
-            // PartLabel
-            // 
-            this.PartLabel.AutoSize = true;
-            this.PartLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PartLabel.Location = new System.Drawing.Point(3, 10);
-            this.PartLabel.Name = "PartLabel";
-            this.PartLabel.Size = new System.Drawing.Size(68, 29);
-            this.PartLabel.TabIndex = 16;
-            this.PartLabel.Text = "Parts";
-            // 
-            // ProductLabel
-            // 
-            this.ProductLabel.AutoSize = true;
-            this.ProductLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductLabel.Location = new System.Drawing.Point(3, 10);
-            this.ProductLabel.Name = "ProductLabel";
-            this.ProductLabel.Size = new System.Drawing.Size(108, 29);
-            this.ProductLabel.TabIndex = 17;
-            this.ProductLabel.Text = "Products";
             // 
             // Main_Screen
             // 
@@ -286,18 +286,18 @@
         private System.Windows.Forms.Button AddPartButton;
         private System.Windows.Forms.Button ModifyPartButton;
         private System.Windows.Forms.Button DeletePartButton;
-        private System.Windows.Forms.Button PartsSearchButton;
+        private System.Windows.Forms.Button mainPartsSearchButton;
         private System.Windows.Forms.DataGridView PartsDataGrid;
         private System.Windows.Forms.Label mainScreenLabel;
-        private System.Windows.Forms.TextBox PartsSearchBox;
+        private System.Windows.Forms.TextBox mainPartsSearchBox;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox ProductsSearchBox;
+        private System.Windows.Forms.TextBox mainProductsSearchBox;
         private System.Windows.Forms.DataGridView ProductsDataGridView;
         private System.Windows.Forms.Button AddProductButton;
         private System.Windows.Forms.Button ModifyProductButton;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button DeleteProductButton;
-        private System.Windows.Forms.Button ProductsSearchButton;
+        private System.Windows.Forms.Button mainProductsSearchButton;
         private System.Windows.Forms.Label PartLabel;
         private System.Windows.Forms.Label ProductLabel;
     }

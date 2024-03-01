@@ -251,7 +251,9 @@
             this.Controls.Add(this.OutsourcedRadioButton);
             this.Controls.Add(this.InHouseRadioButton);
             this.Controls.Add(this.PartLabel);
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(550, 500);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(550, 500);
             this.Name = "PartsForm";
             this.Text = "Parts";
