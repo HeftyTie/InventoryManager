@@ -89,7 +89,7 @@
             // 
             this.partIdLabel.AutoSize = true;
             this.partIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partIdLabel.Location = new System.Drawing.Point(92, 89);
+            this.partIdLabel.Location = new System.Drawing.Point(116, 89);
             this.partIdLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partIdLabel.Name = "partIdLabel";
             this.partIdLabel.Size = new System.Drawing.Size(26, 20);
@@ -100,7 +100,7 @@
             // 
             this.partNameLabel.AutoSize = true;
             this.partNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partNameLabel.Location = new System.Drawing.Point(67, 121);
+            this.partNameLabel.Location = new System.Drawing.Point(91, 121);
             this.partNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partNameLabel.Name = "partNameLabel";
             this.partNameLabel.Size = new System.Drawing.Size(51, 20);
@@ -111,7 +111,7 @@
             // 
             this.partInventoryLabel.AutoSize = true;
             this.partInventoryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partInventoryLabel.Location = new System.Drawing.Point(46, 154);
+            this.partInventoryLabel.Location = new System.Drawing.Point(70, 154);
             this.partInventoryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partInventoryLabel.Name = "partInventoryLabel";
             this.partInventoryLabel.Size = new System.Drawing.Size(74, 20);
@@ -122,7 +122,7 @@
             // 
             this.partPriceCostLabel.AutoSize = true;
             this.partPriceCostLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partPriceCostLabel.Location = new System.Drawing.Point(30, 186);
+            this.partPriceCostLabel.Location = new System.Drawing.Point(54, 186);
             this.partPriceCostLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partPriceCostLabel.Name = "partPriceCostLabel";
             this.partPriceCostLabel.Size = new System.Drawing.Size(89, 20);
@@ -133,7 +133,7 @@
             // 
             this.partMaxLabel.AutoSize = true;
             this.partMaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partMaxLabel.Location = new System.Drawing.Point(77, 219);
+            this.partMaxLabel.Location = new System.Drawing.Point(101, 219);
             this.partMaxLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partMaxLabel.Name = "partMaxLabel";
             this.partMaxLabel.Size = new System.Drawing.Size(38, 20);
@@ -144,7 +144,7 @@
             // 
             this.partIdOrNameLabel.AutoSize = true;
             this.partIdOrNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partIdOrNameLabel.Location = new System.Drawing.Point(30, 251);
+            this.partIdOrNameLabel.Location = new System.Drawing.Point(49, 254);
             this.partIdOrNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partIdOrNameLabel.Name = "partIdOrNameLabel";
             this.partIdOrNameLabel.Size = new System.Drawing.Size(90, 20);
@@ -177,7 +177,7 @@
             // 
             this.partMinLabel.AutoSize = true;
             this.partMinLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partMinLabel.Location = new System.Drawing.Point(236, 219);
+            this.partMinLabel.Location = new System.Drawing.Point(260, 219);
             this.partMinLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partMinLabel.Name = "partMinLabel";
             this.partMinLabel.Size = new System.Drawing.Size(34, 20);
@@ -187,7 +187,7 @@
             // partIdTextBox
             // 
             this.partIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partIdTextBox.Location = new System.Drawing.Point(124, 84);
+            this.partIdTextBox.Location = new System.Drawing.Point(148, 84);
             this.partIdTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partIdTextBox.Name = "partIdTextBox";
             this.partIdTextBox.Size = new System.Drawing.Size(111, 26);
@@ -196,7 +196,7 @@
             // partNameTextBox
             // 
             this.partNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partNameTextBox.Location = new System.Drawing.Point(124, 121);
+            this.partNameTextBox.Location = new System.Drawing.Point(148, 121);
             this.partNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partNameTextBox.Name = "partNameTextBox";
             this.partNameTextBox.Size = new System.Drawing.Size(111, 26);
@@ -205,7 +205,7 @@
             // partInventoryTextBox
             // 
             this.partInventoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partInventoryTextBox.Location = new System.Drawing.Point(124, 154);
+            this.partInventoryTextBox.Location = new System.Drawing.Point(148, 154);
             this.partInventoryTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partInventoryTextBox.Name = "partInventoryTextBox";
             this.partInventoryTextBox.Size = new System.Drawing.Size(111, 26);
@@ -214,7 +214,7 @@
             // partPriceCostTextBox
             // 
             this.partPriceCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partPriceCostTextBox.Location = new System.Drawing.Point(124, 186);
+            this.partPriceCostTextBox.Location = new System.Drawing.Point(148, 186);
             this.partPriceCostTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partPriceCostTextBox.Name = "partPriceCostTextBox";
             this.partPriceCostTextBox.Size = new System.Drawing.Size(111, 26);
@@ -223,7 +223,7 @@
             // partMaxTextBox
             // 
             this.partMaxTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partMaxTextBox.Location = new System.Drawing.Point(124, 219);
+            this.partMaxTextBox.Location = new System.Drawing.Point(148, 219);
             this.partMaxTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partMaxTextBox.Name = "partMaxTextBox";
             this.partMaxTextBox.Size = new System.Drawing.Size(76, 26);
@@ -232,7 +232,7 @@
             // partIdOrNameTextBox
             // 
             this.partIdOrNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partIdOrNameTextBox.Location = new System.Drawing.Point(124, 251);
+            this.partIdOrNameTextBox.Location = new System.Drawing.Point(148, 251);
             this.partIdOrNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partIdOrNameTextBox.Name = "partIdOrNameTextBox";
             this.partIdOrNameTextBox.Size = new System.Drawing.Size(111, 26);
@@ -241,7 +241,7 @@
             // partMinTextBox
             // 
             this.partMinTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partMinTextBox.Location = new System.Drawing.Point(274, 219);
+            this.partMinTextBox.Location = new System.Drawing.Point(298, 219);
             this.partMinTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partMinTextBox.Name = "partMinTextBox";
             this.partMinTextBox.Size = new System.Drawing.Size(76, 26);

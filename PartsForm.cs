@@ -14,13 +14,10 @@ namespace InventoryManager
 {
     public partial class PartsForm : Form
     {
-        private readonly SQLiteConnection _connection;
-        private readonly Product _product;
         public PartsForm()
         {
             InitializeComponent();
 
-            _product = new Product();
             using (var _connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
             {
                 _connection.Open();
@@ -34,6 +31,23 @@ namespace InventoryManager
                         partIdTextBox.Text = partId.ToString(); 
                     }
                 }
+            }
+
+            InHouseRadioButton.CheckedChanged += RadioButton_CheckedChanged;
+            OutsourcedRadioButton.CheckedChanged += RadioButton_CheckedChanged;
+        }
+
+        private void RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(InHouseRadioButton.Checked)
+            {
+                partIdOrNameLabel.Text = "Machine ID";
+                partIdOrNameLabel.Location = new Point(49, 254);
+            }
+            else if (OutsourcedRadioButton.Checked)
+            {
+                partIdOrNameLabel.Text = "Company Name";
+                partIdOrNameLabel.Location = new Point(17, 254);
             }
         }
 
