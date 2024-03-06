@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Classes\Inhouse.cs" />
     <Compile Include="Classes\Inventory.cs" />
+    <Compile Include="Classes\Methods.cs" />
     <Compile Include="Classes\Outsourced.cs" />
     <Compile Include="Classes\Part.cs" />
     <Compile Include="Classes\Product.cs" />
@@ -111,7 +112,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Data\Inventory.db" />
+    <Content Include="Data\Inventory.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -126,7 +129,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -14,27 +14,31 @@ namespace InventoryManager
 {
     public partial class PartsForm : Form
     {
-        private SQLiteConnection _connection;
-        private Product _product;
+        private readonly SQLiteConnection _connection;
+        private readonly Product _product;
         public PartsForm()
         {
             InitializeComponent();
 
             _product = new Product();
-            _connection = new SQLiteConnection("Data Source=.\\Data\\Inventory.db;Version=3;");
-
-            _connection.Open();
-            string selectsql = "SELECT last_insertrowid();";
-            using (var command = new SQLiteCommand(selectsql)) {
-                int partId = Convert.ToInt32(command.ExecuteScalar());  
-                partIdTextBox.Text = partId.ToString();
+            using (var _connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                _connection.Open();
+                string selectSql = "SELECT PartID FROM [Part]";
+                using (var command = new SQLiteCommand(selectSql, _connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int partId = Convert.ToInt32(reader["PartID"]) + 1;
+                        partIdTextBox.Text = partId.ToString(); 
+                    }
+                }
             }
-
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            _connection.Open();
 
         }
 

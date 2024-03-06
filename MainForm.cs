@@ -1,11 +1,8 @@
-﻿using System;
+﻿using InventoryManager.Classes;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace InventoryManager
@@ -15,12 +12,36 @@ namespace InventoryManager
         public Main_Screen()
         {
             InitializeComponent();
+
+
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+
+        private void Main_Screen_Load(object sender, EventArgs e)
         {
-            this.Close();
+            Methods methods = new Methods();
+            List<Part> parts = methods.PopulatePartsDataGridView();
+            List<Product> products = methods.PopulateProductsDataGridView();
+
+            foreach (var part in parts)
+            {
+                if (part is Inhouse inhousePart)
+                {
+                    PartsDataGridView.Rows.Add(inhousePart.PartID, inhousePart.Name, inhousePart.Price, inhousePart.InStock, inhousePart.Min, inhousePart.Max, inhousePart.MachineID);
+                }
+                else if (part is Outsourced outsourcedPart)
+                {
+                    PartsDataGridView.Rows.Add(outsourcedPart.PartID, outsourcedPart.Name, outsourcedPart.Price, outsourcedPart.InStock, outsourcedPart.Min, outsourcedPart.Max, outsourcedPart.CompanyName);
+                }
+            }
+
+            foreach(var product in products)
+            {
+                ProductsDataGridView.Rows.Add(product.ProductID, product.Name, product.Price, product.InStock, product.Min, product.Max);
+
+            }
         }
+
 
         private void AddPartButton_Click(object sender, EventArgs e)
         {
@@ -52,6 +73,10 @@ namespace InventoryManager
         private void DeleteProductButton_Click(object sender, EventArgs e)
         {
 
+        }
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
