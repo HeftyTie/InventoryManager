@@ -12,10 +12,7 @@ namespace InventoryManager
         public Main_Screen()
         {
             InitializeComponent();
-
-
         }
-
 
         private void Main_Screen_Load(object sender, EventArgs e)
         {
@@ -27,17 +24,17 @@ namespace InventoryManager
             {
                 if (part is Inhouse inhousePart)
                 {
-                    PartsDataGridView.Rows.Add(inhousePart.PartID, inhousePart.Name, inhousePart.Price, inhousePart.InStock, inhousePart.Min, inhousePart.Max, inhousePart.MachineID);
+                    partsDataGridView.Rows.Add(inhousePart.PartID, inhousePart.Name, inhousePart.Price, inhousePart.InStock, inhousePart.Min, inhousePart.Max, inhousePart.MachineID);
                 }
                 else if (part is Outsourced outsourcedPart)
                 {
-                    PartsDataGridView.Rows.Add(outsourcedPart.PartID, outsourcedPart.Name, outsourcedPart.Price, outsourcedPart.InStock, outsourcedPart.Min, outsourcedPart.Max, outsourcedPart.CompanyName);
+                    partsDataGridView.Rows.Add(outsourcedPart.PartID, outsourcedPart.Name, outsourcedPart.Price, outsourcedPart.InStock, outsourcedPart.Min, outsourcedPart.Max, outsourcedPart.CompanyName);
                 }
             }
 
             foreach(var product in products)
             {
-                ProductsDataGridView.Rows.Add(product.ProductID, product.Name, product.Price, product.InStock, product.Min, product.Max);
+                productsDataGridView.Rows.Add(product.ProductID, product.Name, product.Price, product.InStock, product.Min, product.Max);
 
             }
         }
@@ -45,8 +42,28 @@ namespace InventoryManager
 
         private void AddPartButton_Click(object sender, EventArgs e)
         {
-            PartsForm form = new PartsForm();
+            PartsForm form = new PartsForm("Add", 2);
             form.ShowDialog();
+        }
+
+        private void ModifyPartButton_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected in the DataGridView
+            if (partsDataGridView.SelectedRows.Count > 0)
+            {
+                int partId = Convert.ToInt32(partsDataGridView.SelectedRows[0].Cells[0].Value);
+                PartsForm form = new PartsForm("Modify", partId);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a row to modify.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DeletePartButton_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void AddProductButton_Click(object sender, EventArgs e)
@@ -55,15 +72,6 @@ namespace InventoryManager
             form.ShowDialog();
         }
 
-        private void ModifyPartButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DeletePartButton_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void ModifyProductButton_Click(object sender, EventArgs e)
         {
