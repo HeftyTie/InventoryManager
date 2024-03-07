@@ -70,7 +70,7 @@ namespace InventoryManager
             // AddPartButton
             // 
             this.AddPartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddPartButton.Location = new System.Drawing.Point(208, 241);
+            this.AddPartButton.Location = new System.Drawing.Point(206, 232);
             this.AddPartButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddPartButton.Name = "AddPartButton";
             this.AddPartButton.Size = new System.Drawing.Size(72, 32);
@@ -82,7 +82,7 @@ namespace InventoryManager
             // ModifyPartButton
             // 
             this.ModifyPartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModifyPartButton.Location = new System.Drawing.Point(285, 241);
+            this.ModifyPartButton.Location = new System.Drawing.Point(283, 232);
             this.ModifyPartButton.Margin = new System.Windows.Forms.Padding(2);
             this.ModifyPartButton.Name = "ModifyPartButton";
             this.ModifyPartButton.Size = new System.Drawing.Size(72, 32);
@@ -94,7 +94,7 @@ namespace InventoryManager
             // DeletePartButton
             // 
             this.DeletePartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeletePartButton.Location = new System.Drawing.Point(361, 241);
+            this.DeletePartButton.Location = new System.Drawing.Point(359, 232);
             this.DeletePartButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeletePartButton.Name = "DeletePartButton";
             this.DeletePartButton.Size = new System.Drawing.Size(72, 32);
@@ -106,13 +106,15 @@ namespace InventoryManager
             // mainPartsSearchButton
             // 
             this.mainPartsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPartsSearchButton.Location = new System.Drawing.Point(205, 4);
+            this.mainPartsSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.mainPartsSearchButton.Location = new System.Drawing.Point(201, 0);
             this.mainPartsSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.mainPartsSearchButton.Name = "mainPartsSearchButton";
-            this.mainPartsSearchButton.Size = new System.Drawing.Size(64, 21);
+            this.mainPartsSearchButton.Size = new System.Drawing.Size(51, 28);
             this.mainPartsSearchButton.TabIndex = 7;
             this.mainPartsSearchButton.Text = "Search";
             this.mainPartsSearchButton.UseVisualStyleBackColor = true;
+            this.mainPartsSearchButton.Click += new System.EventHandler(this.mainPartsSearchButton_Click);
             // 
             // partsDataGridView
             // 
@@ -134,47 +136,53 @@ namespace InventoryManager
             this.partsDataGridView.Location = new System.Drawing.Point(2, 34);
             this.partsDataGridView.Margin = new System.Windows.Forms.Padding(159, 7, 95, 7);
             this.partsDataGridView.Name = "partsDataGridView";
-            this.partsDataGridView.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.partsDataGridView.RowHeadersWidth = 10;
-            this.partsDataGridView.Size = new System.Drawing.Size(431, 197);
-            this.partsDataGridView.TabIndex = 9;
             this.partsDataGridView.ReadOnly = true;
+            this.partsDataGridView.RowHeadersVisible = false;
+            this.partsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.partsDataGridView.Size = new System.Drawing.Size(429, 188);
+            this.partsDataGridView.TabIndex = 9;
             // 
             // PartID
             // 
             this.PartID.HeaderText = "PartID";
             this.PartID.MinimumWidth = 6;
             this.PartID.Name = "PartID";
+            this.PartID.ReadOnly = true;
             // 
             // PartName
             // 
             this.PartName.HeaderText = "Name";
             this.PartName.MinimumWidth = 6;
             this.PartName.Name = "PartName";
+            this.PartName.ReadOnly = true;
             // 
             // PartPrice
             // 
             this.PartPrice.HeaderText = "Price";
             this.PartPrice.MinimumWidth = 6;
             this.PartPrice.Name = "PartPrice";
+            this.PartPrice.ReadOnly = true;
             // 
             // PartInStock
             // 
             this.PartInStock.HeaderText = "InStock";
             this.PartInStock.MinimumWidth = 6;
             this.PartInStock.Name = "PartInStock";
+            this.PartInStock.ReadOnly = true;
             // 
             // PartMin
             // 
             this.PartMin.HeaderText = "Min";
             this.PartMin.MinimumWidth = 6;
             this.PartMin.Name = "PartMin";
+            this.PartMin.ReadOnly = true;
             // 
             // PartMax
             // 
             this.PartMax.HeaderText = "Max";
             this.PartMax.MinimumWidth = 6;
             this.PartMax.Name = "PartMax";
+            this.PartMax.ReadOnly = true;
             // 
             // mainScreenLabel
             // 
@@ -191,7 +199,7 @@ namespace InventoryManager
             // 
             this.mainPartsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainPartsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainPartsSearchBox.Location = new System.Drawing.Point(273, 2);
+            this.mainPartsSearchBox.Location = new System.Drawing.Point(271, 2);
             this.mainPartsSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.mainPartsSearchBox.MinimumSize = new System.Drawing.Size(161, 22);
             this.mainPartsSearchBox.Name = "mainPartsSearchBox";
@@ -258,7 +266,7 @@ namespace InventoryManager
             // 
             this.mainProductsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainProductsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainProductsSearchBox.Location = new System.Drawing.Point(280, 2);
+            this.mainProductsSearchBox.Location = new System.Drawing.Point(273, 2);
             this.mainProductsSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchBox.MinimumSize = new System.Drawing.Size(161, 22);
             this.mainProductsSearchBox.Name = "mainProductsSearchBox";
@@ -282,12 +290,12 @@ namespace InventoryManager
             this.ProductPrice,
             this.ProductMin,
             this.ProductMax});
-            this.productsDataGridView.Location = new System.Drawing.Point(2, 34);
+            this.productsDataGridView.Location = new System.Drawing.Point(6, 34);
             this.productsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.productsDataGridView.Name = "productsDataGridView";
             this.productsDataGridView.RowHeadersVisible = false;
             this.productsDataGridView.RowHeadersWidth = 51;
-            this.productsDataGridView.Size = new System.Drawing.Size(435, 197);
+            this.productsDataGridView.Size = new System.Drawing.Size(429, 188);
             this.productsDataGridView.TabIndex = 21;
             // 
             // ProductID
@@ -323,7 +331,7 @@ namespace InventoryManager
             // AddProductButton
             // 
             this.AddProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddProductButton.Location = new System.Drawing.Point(211, 241);
+            this.AddProductButton.Location = new System.Drawing.Point(208, 232);
             this.AddProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddProductButton.Name = "AddProductButton";
             this.AddProductButton.Size = new System.Drawing.Size(72, 32);
@@ -335,7 +343,7 @@ namespace InventoryManager
             // ModifyProductButton
             // 
             this.ModifyProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModifyProductButton.Location = new System.Drawing.Point(288, 241);
+            this.ModifyProductButton.Location = new System.Drawing.Point(285, 232);
             this.ModifyProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.ModifyProductButton.Name = "ModifyProductButton";
             this.ModifyProductButton.Size = new System.Drawing.Size(72, 32);
@@ -347,10 +355,11 @@ namespace InventoryManager
             // mainProductsSearchButton
             // 
             this.mainProductsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainProductsSearchButton.Location = new System.Drawing.Point(212, 4);
+            this.mainProductsSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainProductsSearchButton.Location = new System.Drawing.Point(203, 0);
             this.mainProductsSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchButton.Name = "mainProductsSearchButton";
-            this.mainProductsSearchButton.Size = new System.Drawing.Size(64, 21);
+            this.mainProductsSearchButton.Size = new System.Drawing.Size(51, 28);
             this.mainProductsSearchButton.TabIndex = 7;
             this.mainProductsSearchButton.Text = "Search";
             this.mainProductsSearchButton.UseVisualStyleBackColor = true;
@@ -359,7 +368,7 @@ namespace InventoryManager
             // 
             this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ExitButton.Location = new System.Drawing.Point(394, 278);
+            this.ExitButton.Location = new System.Drawing.Point(391, 269);
             this.ExitButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(40, 32);
@@ -371,7 +380,7 @@ namespace InventoryManager
             // DeleteProductButton
             // 
             this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteProductButton.Location = new System.Drawing.Point(365, 241);
+            this.DeleteProductButton.Location = new System.Drawing.Point(362, 232);
             this.DeleteProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(72, 32);

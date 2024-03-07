@@ -39,9 +39,10 @@
             this.productInventoryTextBox = new System.Windows.Forms.TextBox();
             this.productInventoryLabel = new System.Windows.Forms.Label();
             this.productPriceCostLabel = new System.Windows.Forms.Label();
-            this.productIdTextBix = new System.Windows.Forms.TextBox();
+            this.productIdTextBox = new System.Windows.Forms.TextBox();
             this.productMaxLabel = new System.Windows.Forms.Label();
             this.productMinLabel = new System.Windows.Forms.Label();
+            this.addOrModifyTextBox = new System.Windows.Forms.TextBox();
             this.associatedPartsLabel = new System.Windows.Forms.Label();
             this.productSearchTextBox = new System.Windows.Forms.TextBox();
             this.productSearchButton = new System.Windows.Forms.Button();
@@ -75,7 +76,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -90,9 +91,10 @@
             this.splitContainer1.Panel1.Controls.Add(this.productInventoryTextBox);
             this.splitContainer1.Panel1.Controls.Add(this.productInventoryLabel);
             this.splitContainer1.Panel1.Controls.Add(this.productPriceCostLabel);
-            this.splitContainer1.Panel1.Controls.Add(this.productIdTextBix);
+            this.splitContainer1.Panel1.Controls.Add(this.productIdTextBox);
             this.splitContainer1.Panel1.Controls.Add(this.productMaxLabel);
             this.splitContainer1.Panel1.Controls.Add(this.productMinLabel);
+            this.splitContainer1.Panel1.Controls.Add(this.addOrModifyTextBox);
             // 
             // splitContainer1.Panel2
             // 
@@ -114,8 +116,8 @@
             // productMinTextBox
             // 
             this.productMinTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productMinTextBox.Location = new System.Drawing.Point(232, 293);
-            this.productMinTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productMinTextBox.Location = new System.Drawing.Point(222, 295);
+            this.productMinTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.productMinTextBox.Name = "productMinTextBox";
             this.productMinTextBox.Size = new System.Drawing.Size(76, 26);
             this.productMinTextBox.TabIndex = 48;
@@ -124,7 +126,7 @@
             // 
             this.productNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productNameTextBox.Location = new System.Drawing.Point(100, 196);
-            this.productNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.productNameTextBox.Name = "productNameTextBox";
             this.productNameTextBox.Size = new System.Drawing.Size(111, 26);
             this.productNameTextBox.TabIndex = 44;
@@ -132,8 +134,8 @@
             // productMaxTextBox
             // 
             this.productMaxTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productMaxTextBox.Location = new System.Drawing.Point(100, 293);
-            this.productMaxTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productMaxTextBox.Location = new System.Drawing.Point(100, 295);
+            this.productMaxTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.productMaxTextBox.Name = "productMaxTextBox";
             this.productMaxTextBox.Size = new System.Drawing.Size(76, 26);
             this.productMaxTextBox.TabIndex = 47;
@@ -153,7 +155,7 @@
             // 
             this.productPriceCostTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productPriceCostTextBox.Location = new System.Drawing.Point(100, 261);
-            this.productPriceCostTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productPriceCostTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.productPriceCostTextBox.Name = "productPriceCostTextBox";
             this.productPriceCostTextBox.Size = new System.Drawing.Size(111, 26);
             this.productPriceCostTextBox.TabIndex = 46;
@@ -173,7 +175,7 @@
             // 
             this.productInventoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productInventoryTextBox.Location = new System.Drawing.Point(100, 228);
-            this.productInventoryTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productInventoryTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.productInventoryTextBox.Name = "productInventoryTextBox";
             this.productInventoryTextBox.Size = new System.Drawing.Size(111, 26);
             this.productInventoryTextBox.TabIndex = 45;
@@ -200,20 +202,20 @@
             this.productPriceCostLabel.TabIndex = 40;
             this.productPriceCostLabel.Text = "Price / Cost";
             // 
-            // productIdTextBix
+            // productIdTextBox
             // 
-            this.productIdTextBix.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productIdTextBix.Location = new System.Drawing.Point(100, 159);
-            this.productIdTextBix.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.productIdTextBix.Name = "productIdTextBix";
-            this.productIdTextBix.Size = new System.Drawing.Size(111, 26);
-            this.productIdTextBix.TabIndex = 43;
+            this.productIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productIdTextBox.Location = new System.Drawing.Point(100, 159);
+            this.productIdTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.productIdTextBox.Name = "productIdTextBox";
+            this.productIdTextBox.Size = new System.Drawing.Size(111, 26);
+            this.productIdTextBox.TabIndex = 43;
             // 
             // productMaxLabel
             // 
             this.productMaxLabel.AutoSize = true;
             this.productMaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.productMaxLabel.Location = new System.Drawing.Point(53, 293);
+            this.productMaxLabel.Location = new System.Drawing.Point(58, 298);
             this.productMaxLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.productMaxLabel.Name = "productMaxLabel";
             this.productMaxLabel.Size = new System.Drawing.Size(38, 20);
@@ -224,12 +226,20 @@
             // 
             this.productMinLabel.AutoSize = true;
             this.productMinLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.productMinLabel.Location = new System.Drawing.Point(195, 293);
+            this.productMinLabel.Location = new System.Drawing.Point(184, 298);
             this.productMinLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.productMinLabel.Name = "productMinLabel";
             this.productMinLabel.Size = new System.Drawing.Size(34, 20);
             this.productMinLabel.TabIndex = 42;
             this.productMinLabel.Text = "Min";
+            // 
+            // addOrModifyTextBox
+            // 
+            this.addOrModifyTextBox.Location = new System.Drawing.Point(116, 159);
+            this.addOrModifyTextBox.Name = "addOrModifyTextBox";
+            this.addOrModifyTextBox.Size = new System.Drawing.Size(21, 20);
+            this.addOrModifyTextBox.TabIndex = 2;
+            this.addOrModifyTextBox.Visible = false;
             // 
             // associatedPartsLabel
             // 
@@ -246,15 +256,15 @@
             // 
             this.productSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productSearchTextBox.Location = new System.Drawing.Point(338, 13);
-            this.productSearchTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productSearchTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.productSearchTextBox.Name = "productSearchTextBox";
             this.productSearchTextBox.Size = new System.Drawing.Size(226, 26);
             this.productSearchTextBox.TabIndex = 10;
             // 
             // productSearchButton
             // 
-            this.productSearchButton.Location = new System.Drawing.Point(270, 13);
-            this.productSearchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productSearchButton.Location = new System.Drawing.Point(268, 14);
+            this.productSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.productSearchButton.Name = "productSearchButton";
             this.productSearchButton.Size = new System.Drawing.Size(56, 24);
             this.productSearchButton.TabIndex = 9;
@@ -265,7 +275,7 @@
             // 
             this.partAddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.partAddButton.Location = new System.Drawing.Point(512, 226);
-            this.partAddButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.partAddButton.Margin = new System.Windows.Forms.Padding(2);
             this.partAddButton.Name = "partAddButton";
             this.partAddButton.Size = new System.Drawing.Size(52, 32);
             this.partAddButton.TabIndex = 8;
@@ -276,29 +286,31 @@
             // 
             this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.Location = new System.Drawing.Point(503, 488);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(60, 32);
             this.CancelButton.TabIndex = 7;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveButton
             // 
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
             this.SaveButton.Location = new System.Drawing.Point(439, 488);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(60, 32);
             this.SaveButton.TabIndex = 6;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // productDeleteButton
             // 
             this.productDeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productDeleteButton.Location = new System.Drawing.Point(503, 444);
-            this.productDeleteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productDeleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.productDeleteButton.Name = "productDeleteButton";
             this.productDeleteButton.Size = new System.Drawing.Size(60, 32);
             this.productDeleteButton.TabIndex = 5;
@@ -320,7 +332,7 @@
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(8, 276);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
@@ -331,7 +343,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(8, 58);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -344,13 +356,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 537);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(912, 576);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(912, 576);
             this.Name = "ProductsForm";
-            this.Text = "ProductsForm";
+            this.Text = "Products Window";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -376,7 +388,7 @@
         private System.Windows.Forms.TextBox productInventoryTextBox;
         private System.Windows.Forms.Label productInventoryLabel;
         private System.Windows.Forms.Label productPriceCostLabel;
-        private System.Windows.Forms.TextBox productIdTextBix;
+        private System.Windows.Forms.TextBox productIdTextBox;
         private System.Windows.Forms.Label productMaxLabel;
         private System.Windows.Forms.Label productMinLabel;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -389,5 +401,6 @@
         private System.Windows.Forms.TextBox productSearchTextBox;
         private System.Windows.Forms.Button productSearchButton;
         private System.Windows.Forms.Label associatedPartsLabel;
+        private System.Windows.Forms.TextBox addOrModifyTextBox;
     }
 }

@@ -133,7 +133,7 @@
             // 
             this.partMaxLabel.AutoSize = true;
             this.partMaxLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partMaxLabel.Location = new System.Drawing.Point(101, 219);
+            this.partMaxLabel.Location = new System.Drawing.Point(100, 223);
             this.partMaxLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partMaxLabel.Name = "partMaxLabel";
             this.partMaxLabel.Size = new System.Drawing.Size(38, 20);
@@ -177,7 +177,7 @@
             // 
             this.partMinLabel.AutoSize = true;
             this.partMinLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.partMinLabel.Location = new System.Drawing.Point(260, 219);
+            this.partMinLabel.Location = new System.Drawing.Point(234, 223);
             this.partMinLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.partMinLabel.Name = "partMinLabel";
             this.partMinLabel.Size = new System.Drawing.Size(34, 20);
@@ -187,7 +187,7 @@
             // partIdTextBox
             // 
             this.partIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partIdTextBox.Location = new System.Drawing.Point(148, 84);
+            this.partIdTextBox.Location = new System.Drawing.Point(148, 83);
             this.partIdTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partIdTextBox.Name = "partIdTextBox";
             this.partIdTextBox.Size = new System.Drawing.Size(111, 26);
@@ -241,7 +241,7 @@
             // partMinTextBox
             // 
             this.partMinTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partMinTextBox.Location = new System.Drawing.Point(298, 219);
+            this.partMinTextBox.Location = new System.Drawing.Point(272, 220);
             this.partMinTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.partMinTextBox.Name = "partMinTextBox";
             this.partMinTextBox.Size = new System.Drawing.Size(76, 26);
@@ -277,7 +277,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(416, 414);
             this.Name = "PartsForm";
-            this.Text = "Parts";
+            this.Text = "Parts Window";
             this.ResumeLayout(false);
             this.PerformLayout();
 

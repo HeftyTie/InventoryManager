@@ -74,33 +74,33 @@
     <Compile Include="Classes\Outsourced.cs" />
     <Compile Include="Classes\Part.cs" />
     <Compile Include="Classes\Product.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartsForm.cs">
+    <Compile Include="Forms\PartsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PartsForm.Designer.cs">
+    <Compile Include="Forms\PartsForm.Designer.cs">
       <DependentUpon>PartsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductsForm.cs">
+    <Compile Include="Forms\ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductsForm.Designer.cs">
+    <Compile Include="Forms\ProductsForm.Designer.cs">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartsForm.resx">
+    <EmbeddedResource Include="Forms\PartsForm.resx">
       <DependentUpon>PartsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductsForm.resx">
+    <EmbeddedResource Include="Forms\ProductsForm.resx">
       <DependentUpon>ProductsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
