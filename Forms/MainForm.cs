@@ -172,14 +172,16 @@ namespace InventoryManager
 
         public void RefreshDataGrid()
         {
-            Methods methods = new Methods();
-            List<Part> parts = methods.PopulatePartsDataGridView();
-            List<Product> products = methods.PopulateProductsDataGridView();
+            // Clear existing rows in DataGridViews
+            partsDataGridView.Rows.Clear();
+            productsDataGridView.Rows.Clear();
 
-            partsDataGridView.Rows.Clear(); 
-            productsDataGridView.Rows.Clear(); 
+            // Populate parts and products from the database
+            inventory.PopulatePartsFromDatabase();
+            inventory.PopulateProductsFromDatabase();
 
-            foreach (var part in parts)
+            // Populate partsDataGridView
+            foreach (var part in inventory.AllParts)
             {
                 if (part is Inhouse inhousePart)
                 {
@@ -191,12 +193,15 @@ namespace InventoryManager
                 }
             }
 
-            foreach (var product in products)
+            // Populate productsDataGridView
+            foreach (var product in inventory.Products)
             {
                 productsDataGridView.Rows.Add(product.ProductID, product.Name, product.Price, product.InStock, product.Min, product.Max);
             }
 
             this.Update();
         }
+
+
     }
 }
