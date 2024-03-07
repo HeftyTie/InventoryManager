@@ -68,7 +68,6 @@
             this.InHouseRadioButton.Name = "InHouseRadioButton";
             this.InHouseRadioButton.Size = new System.Drawing.Size(90, 24);
             this.InHouseRadioButton.TabIndex = 19;
-            this.InHouseRadioButton.TabStop = true;
             this.InHouseRadioButton.Text = "In-House";
             this.InHouseRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -81,7 +80,6 @@
             this.OutsourcedRadioButton.Name = "OutsourcedRadioButton";
             this.OutsourcedRadioButton.Size = new System.Drawing.Size(104, 22);
             this.OutsourcedRadioButton.TabIndex = 20;
-            this.OutsourcedRadioButton.TabStop = true;
             this.OutsourcedRadioButton.Text = "Outsourced";
             this.OutsourcedRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -169,6 +167,7 @@
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(60, 32);
             this.CancelButton.TabIndex = 28;
+            this.CancelButton.TabStop = false;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -192,6 +191,7 @@
             this.partIdTextBox.Name = "partIdTextBox";
             this.partIdTextBox.Size = new System.Drawing.Size(111, 26);
             this.partIdTextBox.TabIndex = 30;
+            this.partIdTextBox.TabStop = false;
             // 
             // partNameTextBox
             // 

@@ -39,12 +39,12 @@ namespace InventoryManager.Classes
         public void UpdateProduct(int productId, Product product) 
         {
             string sqlQuery = "UPDATE Product SET " +
-                      "Name = @Name, " +
-                      "InStock = @InStock, " +
-                      "Price = @Price, " +
-                      "Min = @Min, " +
-                      "Max = @Max, " +
-                      $"WHERE ProductID = {productId}";
+                              "Name = @Name, " +
+                              "InStock = @InStock, " +
+                              "Price = @Price, " +
+                              "Min = @Min, " +
+                              "Max = @Max " + 
+                              $"WHERE ProductID = {productId}";
 
             methods.ProductInventoryManager(sqlQuery, product);
         }

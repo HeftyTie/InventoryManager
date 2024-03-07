@@ -45,27 +45,28 @@ namespace InventoryManager
             // Attach event handlers
             InHouseRadioButton.CheckedChanged += RadioButton_CheckedChanged;
             OutsourcedRadioButton.CheckedChanged += RadioButton_CheckedChanged;
-            partNameTextBox.KeyPress += StringValidation;
-            partInventoryTextBox.KeyPress += IntValidation;
-            partInventoryTextBox.TextChanged += (sender, e) => ValidateMinMaxInventory();
-            partPriceCostTextBox.KeyPress += DecimalValidation;
-            partMaxTextBox.KeyPress += IntValidation;
-            partMaxTextBox.TextChanged += (sender, e) => ValidateMinMaxInventory();
-            partMinTextBox.KeyPress += IntValidation;
-            partMinTextBox.TextChanged += (sender, e) => ValidateMinMaxInventory();
-            foreach (Control control in Controls)
+            partNameTextBox.KeyPress += Validations.StringValidation;
+            partInventoryTextBox.KeyPress += Validations.IntValidation;
+            partPriceCostTextBox.KeyPress += Validations.DecimalValidation;
+            partMaxTextBox.KeyPress += Validations.IntValidation;
+            partMinTextBox.KeyPress += Validations.IntValidation;
+            partInventoryTextBox.TextChanged += (sender, e) => Validations.ValidateMinMaxInventory(partMinTextBox, partMaxTextBox, partInventoryTextBox);
+            partMaxTextBox.TextChanged += (sender, e) => Validations.ValidateMinMaxInventory(partMinTextBox, partMaxTextBox, partInventoryTextBox);
+            partMinTextBox.TextChanged += (sender, e) => Validations.ValidateMinMaxInventory(partMinTextBox, partMaxTextBox, partInventoryTextBox);
+            foreach (TextBox textBox in Controls.OfType<TextBox>())
             {
-                if (control is TextBox textBox)
-                {
-                    textBox.TextChanged += TextBox_TextChanged;
-                }
+                textBox.TextChanged += (sender, e) => Validations.ValidateTextBoxes(Controls, SaveButton);
             }
 
             // Disable SaveButton initially
             SaveButton.Enabled = false;
+
+            InHouseRadioButton.Checked = true;
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            Inventory inventory = new Inventory();
+
             int partID = Int32.Parse(partIdTextBox.Text);
             string partName = partNameTextBox.Text;
             int inStock = Int32.Parse(partInventoryTextBox.Text);
@@ -73,8 +74,7 @@ namespace InventoryManager
             int max = Int32.Parse(partMaxTextBox.Text);
             int min = Int32.Parse(partMinTextBox.Text);
 
-            Part newPart = null;
-
+            Part newPart;
             if (int.TryParse(partIdOrNameTextBox.Text, out int machineID))
             {
                 newPart = new Inhouse
@@ -86,6 +86,7 @@ namespace InventoryManager
                     Min = min,
                     MachineID = machineID
                 };
+                inventory.AddPart(newPart);
             }
             else if (partIdOrNameTextBox.Text is string companyName)
             {
@@ -98,11 +99,8 @@ namespace InventoryManager
                     Min = min,
                     CompanyName = companyName
                 };
+                inventory.UpdatePart(partID ,newPart);
             }
-
-            Inventory inventory = new Inventory();
-
-           
 
             this.Close();
             mainForm.RefreshDataGrid();
@@ -125,8 +123,8 @@ namespace InventoryManager
                 {
                     partIdOrNameTextBox.Text = "";
                 }
-                partIdOrNameTextBox.KeyPress -= StringValidation;
-                partIdOrNameTextBox.KeyPress += IntValidation;
+                partIdOrNameTextBox.KeyPress -= Validations.StringValidation;
+                partIdOrNameTextBox.KeyPress += Validations.IntValidation;
             }
             else if (OutsourcedRadioButton.Checked)
             {
@@ -136,82 +134,9 @@ namespace InventoryManager
                 {
                     partIdOrNameTextBox.Text = "";
                 }
-                partIdOrNameTextBox.KeyPress -= IntValidation;
-                partIdOrNameTextBox.KeyPress += StringValidation;
+                partIdOrNameTextBox.KeyPress -= Validations.IntValidation;
+                partIdOrNameTextBox.KeyPress += Validations.StringValidation;
             }
-        }
-
-        // Allow only digits (0-9) and Backspace
-        private void IntValidation(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
-            {
-                e.Handled = true;
-                MessageBox.Show(this, "Please enter digits only.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Allow digits (0-9), decimal point, and Backspace
-        private void DecimalValidation(object sender, KeyPressEventArgs e)
-        {
-            // Check if the pressed key is not a digit, not a decimal point, and not a Backspace
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '\b')
-            {
-                // If not, handle the key press event
-                e.Handled = true;
-                MessageBox.Show(this, "Please enter digits or a decimal point.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            // If the key is the decimal point, allow only one decimal point
-            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains('.'))
-            {
-                e.Handled = true;
-                MessageBox.Show(this, "Only one decimal point is allowed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Allow only letters and Backspace
-        private void StringValidation(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != '\b')
-            {
-                e.Handled = true;
-                MessageBox.Show(this, "Please enter letters only.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void ValidateMinMaxInventory()
-        {
-            int min, max, inventory;
-
-            if (int.TryParse(partMinTextBox.Text, out min) && int.TryParse(partMaxTextBox.Text, out max) && int.TryParse(partInventoryTextBox.Text, out inventory))
-            {
-                if (min >= max)
-                {
-                    MessageBox.Show("Minimum value should be less than Maximum value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    partMinTextBox.Clear();
-                }
-                else if (inventory < min || inventory > max)
-                {
-                    MessageBox.Show("Inventory value should be between Minimum and Maximum values.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    partInventoryTextBox.Clear();
-                }
-            }
-        }
-
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-            bool allTextBoxesFilled = true;
-
-            foreach (Control control in Controls)
-            {
-                if (control is TextBox textBox && textBox.Visible && string.IsNullOrWhiteSpace(textBox.Text))
-                {
-                    allTextBoxesFilled = false;
-                    break;
-                }
-            }
-
-            SaveButton.Enabled = allTextBoxesFilled;
         }
     }
 }

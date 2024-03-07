@@ -179,15 +179,15 @@ namespace InventoryManager.Classes
                                 textBox[4].Text = reader.GetInt32(reader.GetOrdinal("Max")).ToString();
                                 textBox[5].Text = reader.GetInt32(reader.GetOrdinal("Min")).ToString();
 
-                                if (textBox.Count >= 8)
+                                if (textBox.Count >= 7)
                                 {
                                     if (reader["MachineID"] != DBNull.Value)
                                     {
-                                        textBox[7].Text = reader["MachineID"].ToString();
+                                        textBox[6].Text = reader["MachineID"].ToString();
                                     }
                                     else if (!string.IsNullOrEmpty(reader["CompanyName"].ToString()))
                                     {
-                                        textBox[7].Text = reader["CompanyName"].ToString();
+                                        textBox[6].Text = reader["CompanyName"].ToString();
                                     }
                                 }
                             }
@@ -197,10 +197,5 @@ namespace InventoryManager.Classes
                 }
             }
         }
-
-
-
-
-
     }
 }

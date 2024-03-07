@@ -75,6 +75,7 @@ namespace InventoryManager
             this.AddPartButton.Name = "AddPartButton";
             this.AddPartButton.Size = new System.Drawing.Size(72, 32);
             this.AddPartButton.TabIndex = 0;
+            this.AddPartButton.TabStop = false;
             this.AddPartButton.Text = "Add";
             this.AddPartButton.UseVisualStyleBackColor = true;
             this.AddPartButton.Click += new System.EventHandler(this.AddPartButton_Click);
@@ -87,6 +88,7 @@ namespace InventoryManager
             this.ModifyPartButton.Name = "ModifyPartButton";
             this.ModifyPartButton.Size = new System.Drawing.Size(72, 32);
             this.ModifyPartButton.TabIndex = 1;
+            this.ModifyPartButton.TabStop = false;
             this.ModifyPartButton.Text = "Modify";
             this.ModifyPartButton.UseVisualStyleBackColor = true;
             this.ModifyPartButton.Click += new System.EventHandler(this.ModifyPartButton_Click);
@@ -99,6 +101,7 @@ namespace InventoryManager
             this.DeletePartButton.Name = "DeletePartButton";
             this.DeletePartButton.Size = new System.Drawing.Size(72, 32);
             this.DeletePartButton.TabIndex = 2;
+            this.DeletePartButton.TabStop = false;
             this.DeletePartButton.Text = "Delete";
             this.DeletePartButton.UseVisualStyleBackColor = true;
             this.DeletePartButton.Click += new System.EventHandler(this.DeletePartButton_Click);
@@ -119,6 +122,7 @@ namespace InventoryManager
             // partsDataGridView
             // 
             this.partsDataGridView.AllowUserToAddRows = false;
+            this.partsDataGridView.AllowUserToDeleteRows = false;
             this.partsDataGridView.AllowUserToResizeColumns = false;
             this.partsDataGridView.AllowUserToResizeRows = false;
             this.partsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -211,6 +215,7 @@ namespace InventoryManager
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(10, 32);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
@@ -266,7 +271,7 @@ namespace InventoryManager
             // 
             this.mainProductsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainProductsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainProductsSearchBox.Location = new System.Drawing.Point(273, 2);
+            this.mainProductsSearchBox.Location = new System.Drawing.Point(276, 2);
             this.mainProductsSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchBox.MinimumSize = new System.Drawing.Size(161, 22);
             this.mainProductsSearchBox.Name = "mainProductsSearchBox";
@@ -276,6 +281,7 @@ namespace InventoryManager
             // productsDataGridView
             // 
             this.productsDataGridView.AllowUserToAddRows = false;
+            this.productsDataGridView.AllowUserToDeleteRows = false;
             this.productsDataGridView.AllowUserToResizeColumns = false;
             this.productsDataGridView.AllowUserToResizeRows = false;
             this.productsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -293,49 +299,57 @@ namespace InventoryManager
             this.productsDataGridView.Location = new System.Drawing.Point(6, 34);
             this.productsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.productsDataGridView.Name = "productsDataGridView";
+            this.productsDataGridView.ReadOnly = true;
             this.productsDataGridView.RowHeadersVisible = false;
             this.productsDataGridView.RowHeadersWidth = 51;
-            this.productsDataGridView.Size = new System.Drawing.Size(429, 188);
+            this.productsDataGridView.Size = new System.Drawing.Size(432, 188);
             this.productsDataGridView.TabIndex = 21;
             // 
             // ProductID
             // 
             this.ProductID.HeaderText = "ProductID";
             this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
             // 
             // ProductName
             // 
             this.ProductName.HeaderText = "Name";
             this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
             // 
             // ProductInventory
             // 
             this.ProductInventory.HeaderText = "Inventory";
             this.ProductInventory.Name = "ProductInventory";
+            this.ProductInventory.ReadOnly = true;
             // 
             // ProductPrice
             // 
             this.ProductPrice.HeaderText = "Price";
             this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.ReadOnly = true;
             // 
             // ProductMin
             // 
             this.ProductMin.HeaderText = "Min";
             this.ProductMin.Name = "ProductMin";
+            this.ProductMin.ReadOnly = true;
             // 
             // ProductMax
             // 
             this.ProductMax.HeaderText = "Max";
             this.ProductMax.Name = "ProductMax";
+            this.ProductMax.ReadOnly = true;
             // 
             // AddProductButton
             // 
             this.AddProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddProductButton.Location = new System.Drawing.Point(208, 232);
+            this.AddProductButton.Location = new System.Drawing.Point(211, 232);
             this.AddProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddProductButton.Name = "AddProductButton";
             this.AddProductButton.Size = new System.Drawing.Size(72, 32);
             this.AddProductButton.TabIndex = 16;
+            this.AddProductButton.TabStop = false;
             this.AddProductButton.Text = "Add";
             this.AddProductButton.UseVisualStyleBackColor = true;
             this.AddProductButton.Click += new System.EventHandler(this.AddProductButton_Click);
@@ -343,11 +357,12 @@ namespace InventoryManager
             // ModifyProductButton
             // 
             this.ModifyProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModifyProductButton.Location = new System.Drawing.Point(285, 232);
+            this.ModifyProductButton.Location = new System.Drawing.Point(288, 232);
             this.ModifyProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.ModifyProductButton.Name = "ModifyProductButton";
             this.ModifyProductButton.Size = new System.Drawing.Size(72, 32);
             this.ModifyProductButton.TabIndex = 17;
+            this.ModifyProductButton.TabStop = false;
             this.ModifyProductButton.Text = "Modify";
             this.ModifyProductButton.UseVisualStyleBackColor = true;
             this.ModifyProductButton.Click += new System.EventHandler(this.ModifyProductButton_Click);
@@ -356,7 +371,7 @@ namespace InventoryManager
             // 
             this.mainProductsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainProductsSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainProductsSearchButton.Location = new System.Drawing.Point(203, 0);
+            this.mainProductsSearchButton.Location = new System.Drawing.Point(206, 0);
             this.mainProductsSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchButton.Name = "mainProductsSearchButton";
             this.mainProductsSearchButton.Size = new System.Drawing.Size(51, 28);
@@ -368,7 +383,7 @@ namespace InventoryManager
             // 
             this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ExitButton.Location = new System.Drawing.Point(391, 269);
+            this.ExitButton.Location = new System.Drawing.Point(394, 269);
             this.ExitButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(40, 32);
@@ -380,11 +395,12 @@ namespace InventoryManager
             // DeleteProductButton
             // 
             this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteProductButton.Location = new System.Drawing.Point(362, 232);
+            this.DeleteProductButton.Location = new System.Drawing.Point(365, 232);
             this.DeleteProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(72, 32);
             this.DeleteProductButton.TabIndex = 18;
+            this.DeleteProductButton.TabStop = false;
             this.DeleteProductButton.Text = "Delete";
             this.DeleteProductButton.UseVisualStyleBackColor = true;
             this.DeleteProductButton.Click += new System.EventHandler(this.DeleteProductButton_Click);
