@@ -1,4 +1,6 @@
-﻿namespace InventoryManager
+﻿using System.Windows.Forms;
+
+namespace InventoryManager
 {
     partial class ProductsForm
     {
@@ -43,21 +45,37 @@
             this.productMaxLabel = new System.Windows.Forms.Label();
             this.productMinLabel = new System.Windows.Forms.Label();
             this.associatedPartsLabel = new System.Windows.Forms.Label();
+            this.candidatePartSearchTextBox = new System.Windows.Forms.TextBox();
             this.productSearchButton = new System.Windows.Forms.Button();
             this.partAddButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.productDeleteButton = new System.Windows.Forms.Button();
             this.candidatePartsLabel = new System.Windows.Forms.Label();
-            this.productSearchTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.associatedPartsGridView = new System.Windows.Forms.DataGridView();
+            this.candidatePartsGridView = new System.Windows.Forms.DataGridView();
+            this.associatedPartID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.associatedPartName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.associatedPartInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.associatedPartPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.associatedPartMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.associatedPartMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.associatedPartMachineID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.associatedPartCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartInventory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartMachineID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.candidatePartCompanyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.associatedPartsGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.candidatePartsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductLabel
@@ -98,15 +116,15 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.associatedPartsLabel);
-            this.splitContainer1.Panel2.Controls.Add(this.productSearchTextBox);
+            this.splitContainer1.Panel2.Controls.Add(this.candidatePartSearchTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.productSearchButton);
             this.splitContainer1.Panel2.Controls.Add(this.partAddButton);
             this.splitContainer1.Panel2.Controls.Add(this.CancelButton);
             this.splitContainer1.Panel2.Controls.Add(this.SaveButton);
             this.splitContainer1.Panel2.Controls.Add(this.productDeleteButton);
             this.splitContainer1.Panel2.Controls.Add(this.candidatePartsLabel);
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView2);
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel2.Controls.Add(this.associatedPartsGridView);
+            this.splitContainer1.Panel2.Controls.Add(this.candidatePartsGridView);
             this.splitContainer1.Size = new System.Drawing.Size(896, 537);
             this.splitContainer1.SplitterDistance = 314;
             this.splitContainer1.SplitterWidth = 3;
@@ -244,6 +262,15 @@
             this.associatedPartsLabel.TabIndex = 11;
             this.associatedPartsLabel.Text = "Parts Associated With This Product";
             // 
+            // candidatePartSearchTextBox
+            // 
+            this.candidatePartSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.candidatePartSearchTextBox.Location = new System.Drawing.Point(338, 13);
+            this.candidatePartSearchTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.candidatePartSearchTextBox.Name = "candidatePartSearchTextBox";
+            this.candidatePartSearchTextBox.Size = new System.Drawing.Size(226, 26);
+            this.candidatePartSearchTextBox.TabIndex = 10;
+            // 
             // productSearchButton
             // 
             this.productSearchButton.Location = new System.Drawing.Point(268, 14);
@@ -253,6 +280,7 @@
             this.productSearchButton.TabIndex = 9;
             this.productSearchButton.Text = "Search";
             this.productSearchButton.UseVisualStyleBackColor = true;
+            this.productSearchButton.Click += new System.EventHandler(this.productSearchButton_Click);
             // 
             // partAddButton
             // 
@@ -264,6 +292,7 @@
             this.partAddButton.TabIndex = 8;
             this.partAddButton.Text = "Add";
             this.partAddButton.UseVisualStyleBackColor = true;
+            this.partAddButton.Click += new System.EventHandler(this.partAddButton_Click);
             // 
             // CancelButton
             // 
@@ -299,6 +328,7 @@
             this.productDeleteButton.TabIndex = 5;
             this.productDeleteButton.Text = "Delete";
             this.productDeleteButton.UseVisualStyleBackColor = true;
+            this.productDeleteButton.Click += new System.EventHandler(this.productDeleteButton_Click);
             // 
             // candidatePartsLabel
             // 
@@ -311,36 +341,159 @@
             this.candidatePartsLabel.TabIndex = 2;
             this.candidatePartsLabel.Text = "All Candidate Parts";
             // 
-            // productSearchTextBox
+            // associatedPartsGridView
             // 
-            this.productSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productSearchTextBox.Location = new System.Drawing.Point(338, 13);
-            this.productSearchTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.productSearchTextBox.Name = "productSearchTextBox";
-            this.productSearchTextBox.Size = new System.Drawing.Size(226, 26);
-            this.productSearchTextBox.TabIndex = 10;
+            this.associatedPartsGridView.AllowUserToAddRows = false;
+            this.associatedPartsGridView.AllowUserToDeleteRows = false;
+            this.associatedPartsGridView.AllowUserToResizeColumns = false;
+            this.associatedPartsGridView.AllowUserToResizeRows = false;
+            this.associatedPartsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.associatedPartsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.associatedPartsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.associatedPartID,
+            this.associatedPartName,
+            this.associatedPartInventory,
+            this.associatedPartPrice,
+            this.associatedPartMin,
+            this.associatedPartMax,
+            this.associatedPartMachineID,
+            this.associatedPartCompanyName});
+            this.associatedPartsGridView.Location = new System.Drawing.Point(8, 276);
+            this.associatedPartsGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.associatedPartsGridView.Name = "associatedPartsGridView";
+            this.associatedPartsGridView.ReadOnly = true;
+            this.associatedPartsGridView.RowHeadersVisible = false;
+            this.associatedPartsGridView.RowHeadersWidth = 51;
+            this.associatedPartsGridView.RowTemplate.Height = 24;
+            this.associatedPartsGridView.Size = new System.Drawing.Size(555, 162);
+            this.associatedPartsGridView.TabIndex = 1;
             // 
-            // dataGridView1
+            // candidatePartsGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 58);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(562, 162);
-            this.dataGridView1.TabIndex = 0;
+            this.candidatePartsGridView.AllowUserToAddRows = false;
+            this.candidatePartsGridView.AllowUserToDeleteRows = false;
+            this.candidatePartsGridView.AllowUserToResizeColumns = false;
+            this.candidatePartsGridView.AllowUserToResizeRows = false;
+            this.candidatePartsGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.candidatePartsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.candidatePartsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.candidatePartID,
+            this.candidatePartName,
+            this.candidatePartInventory,
+            this.candidatePartPrice,
+            this.candidatePartMin,
+            this.candidatePartMax,
+            this.candidatePartMachineID,
+            this.candidatePartCompanyName});
+            this.candidatePartsGridView.Location = new System.Drawing.Point(8, 58);
+            this.candidatePartsGridView.Margin = new System.Windows.Forms.Padding(2);
+            this.candidatePartsGridView.Name = "candidatePartsGridView";
+            this.candidatePartsGridView.ReadOnly = true;
+            this.candidatePartsGridView.RowHeadersVisible = false;
+            this.candidatePartsGridView.RowHeadersWidth = 51;
+            this.candidatePartsGridView.RowTemplate.Height = 24;
+            this.candidatePartsGridView.Size = new System.Drawing.Size(555, 162);
+            this.candidatePartsGridView.TabIndex = 0;
             // 
-            // dataGridView2
+            // associatedPartID
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(8, 276);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(562, 162);
-            this.dataGridView2.TabIndex = 1;
+            this.associatedPartID.HeaderText = "PartID";
+            this.associatedPartID.Name = "associatedPartID";
+            this.associatedPartID.ReadOnly = true;
+            // 
+            // associatedPartName
+            // 
+            this.associatedPartName.HeaderText = "Name";
+            this.associatedPartName.Name = "associatedPartName";
+            this.associatedPartName.ReadOnly = true;
+            // 
+            // associatedPartInventory
+            // 
+            this.associatedPartInventory.HeaderText = "Inventory";
+            this.associatedPartInventory.Name = "associatedPartInventory";
+            this.associatedPartInventory.ReadOnly = true;
+            // 
+            // associatedPartPrice
+            // 
+            this.associatedPartPrice.HeaderText = "Price";
+            this.associatedPartPrice.Name = "associatedPartPrice";
+            this.associatedPartPrice.ReadOnly = true;
+            // 
+            // associatedPartMin
+            // 
+            this.associatedPartMin.HeaderText = "Min";
+            this.associatedPartMin.Name = "associatedPartMin";
+            this.associatedPartMin.ReadOnly = true;
+            // 
+            // associatedPartMax
+            // 
+            this.associatedPartMax.HeaderText = "Max";
+            this.associatedPartMax.Name = "associatedPartMax";
+            this.associatedPartMax.ReadOnly = true;
+            // 
+            // associatedPartMachineID
+            // 
+            this.associatedPartMachineID.HeaderText = "Machine ID";
+            this.associatedPartMachineID.Name = "associatedPartMachineID";
+            this.associatedPartMachineID.ReadOnly = true;
+            this.associatedPartMachineID.Visible = false;
+            // 
+            // associatedPartCompanyName
+            // 
+            this.associatedPartCompanyName.HeaderText = "Company Name";
+            this.associatedPartCompanyName.Name = "associatedPartCompanyName";
+            this.associatedPartCompanyName.ReadOnly = true;
+            this.associatedPartCompanyName.Visible = false;
+            // 
+            // candidatePartID
+            // 
+            this.candidatePartID.HeaderText = "PartID";
+            this.candidatePartID.Name = "candidatePartID";
+            this.candidatePartID.ReadOnly = true;
+            // 
+            // candidatePartName
+            // 
+            this.candidatePartName.HeaderText = "Name";
+            this.candidatePartName.Name = "candidatePartName";
+            this.candidatePartName.ReadOnly = true;
+            // 
+            // candidatePartInventory
+            // 
+            this.candidatePartInventory.HeaderText = "Inventory";
+            this.candidatePartInventory.Name = "candidatePartInventory";
+            this.candidatePartInventory.ReadOnly = true;
+            // 
+            // candidatePartPrice
+            // 
+            this.candidatePartPrice.HeaderText = "Price";
+            this.candidatePartPrice.Name = "candidatePartPrice";
+            this.candidatePartPrice.ReadOnly = true;
+            // 
+            // candidatePartMin
+            // 
+            this.candidatePartMin.HeaderText = "Min";
+            this.candidatePartMin.Name = "candidatePartMin";
+            this.candidatePartMin.ReadOnly = true;
+            // 
+            // candidatePartMax
+            // 
+            this.candidatePartMax.HeaderText = "Max";
+            this.candidatePartMax.Name = "candidatePartMax";
+            this.candidatePartMax.ReadOnly = true;
+            // 
+            // candidatePartMachineID
+            // 
+            this.candidatePartMachineID.HeaderText = "Machine ID";
+            this.candidatePartMachineID.Name = "candidatePartMachineID";
+            this.candidatePartMachineID.ReadOnly = true;
+            this.candidatePartMachineID.Visible = false;
+            // 
+            // candidatePartCompanyName
+            // 
+            this.candidatePartCompanyName.HeaderText = "Company Name";
+            this.candidatePartCompanyName.Name = "candidatePartCompanyName";
+            this.candidatePartCompanyName.ReadOnly = true;
+            this.candidatePartCompanyName.Visible = false;
             // 
             // ProductsForm
             // 
@@ -361,8 +514,8 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.associatedPartsGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.candidatePartsGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,8 +543,24 @@
         private System.Windows.Forms.Button partAddButton;
         private System.Windows.Forms.Button productSearchButton;
         private System.Windows.Forms.Label associatedPartsLabel;
-        private System.Windows.Forms.TextBox productSearchTextBox;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox candidatePartSearchTextBox;
+        private System.Windows.Forms.DataGridView associatedPartsGridView;
+        private System.Windows.Forms.DataGridView candidatePartsGridView;
+        private DataGridViewTextBoxColumn associatedPartID;
+        private DataGridViewTextBoxColumn associatedPartName;
+        private DataGridViewTextBoxColumn associatedPartInventory;
+        private DataGridViewTextBoxColumn associatedPartPrice;
+        private DataGridViewTextBoxColumn associatedPartMin;
+        private DataGridViewTextBoxColumn associatedPartMax;
+        private DataGridViewTextBoxColumn associatedPartMachineID;
+        private DataGridViewTextBoxColumn associatedPartCompanyName;
+        private DataGridViewTextBoxColumn candidatePartID;
+        private DataGridViewTextBoxColumn candidatePartName;
+        private DataGridViewTextBoxColumn candidatePartInventory;
+        private DataGridViewTextBoxColumn candidatePartPrice;
+        private DataGridViewTextBoxColumn candidatePartMin;
+        private DataGridViewTextBoxColumn candidatePartMax;
+        private DataGridViewTextBoxColumn candidatePartMachineID;
+        private DataGridViewTextBoxColumn candidatePartCompanyName;
     }
 }

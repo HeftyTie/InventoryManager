@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace InventoryManager.Classes
 {
@@ -29,13 +30,15 @@ namespace InventoryManager.Classes
 
         public bool RemoveProduct(int productId)
         {
-            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            if (!IsEntityAssociated(productId, "AssociatedParts", "ProductID"))
             {
-                connection.Open();
-
-                using (var transaction = connection.BeginTransaction())
+                using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
                 {
-                    string sql = @"
+                    connection.Open();
+
+                    using (var transaction = connection.BeginTransaction())
+                    {
+                        string sql = @"
                     DELETE FROM [Product] 
                     WHERE ProductID = @productID;
 
@@ -43,18 +46,24 @@ namespace InventoryManager.Classes
                     SET ProductID = ProductID - 1 
                     WHERE ProductID > @deletedProductID;";
 
-                    using (var command = new SQLiteCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@productID", productId);
-                        command.Parameters.AddWithValue("@deletedProductID", productId);
-                        command.ExecuteNonQuery();
-                    }
+                        using (var command = new SQLiteCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@productID", productId);
+                            command.Parameters.AddWithValue("@deletedProductID", productId);
+                            command.ExecuteNonQuery();
+                        }
 
-                    transaction.Commit();
+                        transaction.Commit();
+                    }
                 }
+                return true;
+            }
+            else
+            {
+                MessageBox.Show($"Product is associated with a part or multiple and cannot be deleted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
 
-            return true;
         }
 
         public Product LookupProduct(int productId)
@@ -94,7 +103,6 @@ namespace InventoryManager.Classes
             return product;
         }
 
-
         public void UpdateProduct(int productId, Product product) 
         {
             string sqlQuery = "UPDATE Product SET " +
@@ -120,34 +128,40 @@ namespace InventoryManager.Classes
 
         public bool DeletePart(Part part)
         {
-            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            if (!IsEntityAssociated(part.PartID, "AssociatedParts", "PartID"))
             {
-                connection.Open();
-
-                using (var transaction = connection.BeginTransaction())
+                using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
                 {
-                    string sql = @"
-                    DELETE FROM [Part] 
-                    WHERE PartID = @partID;
+                    connection.Open();
 
-                    UPDATE [Part] 
-                    SET PartID = PartID - 1 
-                    WHERE PartID > @deletedPartID;";
-
-                    using (var command = new SQLiteCommand(sql, connection))
+                    using (var transaction = connection.BeginTransaction())
                     {
-                        command.Parameters.AddWithValue("@partID", part.PartID);
-                        command.Parameters.AddWithValue("@deletedPartID", part.PartID);
-                        command.ExecuteNonQuery();
+                        string sql = @"
+                        DELETE FROM [Part] 
+                        WHERE PartID = @partID;
+
+                        UPDATE [Part] 
+                        SET PartID = PartID - 1 
+                        WHERE PartID > @deletedPartID;";
+
+                        using (var command = new SQLiteCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@partID", part.PartID);
+                            command.Parameters.AddWithValue("@deletedPartID", part.PartID);
+                            command.ExecuteNonQuery();
+                        }
+
+                        transaction.Commit();
                     }
-
-                    transaction.Commit();
                 }
+                return true;
             }
-
-            return true;
+            else
+            {
+                MessageBox.Show($"Part {part.PartID}: {part.Name} is associated with a product and cannot be deleted.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
         }
-
 
         public Part LookupPart(int partId)
         {
@@ -202,7 +216,6 @@ namespace InventoryManager.Classes
             }
             return part;
         }
-
 
         public void UpdatePart(int partId, Part part)
         {
@@ -295,6 +308,22 @@ namespace InventoryManager.Classes
                             Products.Add(product);
                         }
                     }
+                }
+            }
+        }
+
+        private bool IsEntityAssociated(int entityId, string tableName, string columnName)
+        {
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+                string sql = $"SELECT COUNT(*) FROM {tableName} WHERE {columnName} = @entityID";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@entityID", entityId);
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0;
                 }
             }
         }

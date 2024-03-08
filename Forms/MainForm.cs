@@ -21,7 +21,6 @@ namespace InventoryManager
             RefreshDataGrid();
 
             // Setup CellClick event handler
-            partsDataGridView.ClearSelection();
             partsDataGridView.CellClick += (s, cellEventArgs) =>
             {
                 if (cellEventArgs.RowIndex >= 0)
@@ -30,7 +29,6 @@ namespace InventoryManager
                 }
             };
 
-            productsDataGridView.ClearSelection();
             productsDataGridView.CellClick += (s, cellEventArgs) =>
             {
                 if (cellEventArgs.RowIndex >= 0)
@@ -117,11 +115,11 @@ namespace InventoryManager
                     partsDataGridView.Rows.Clear();
                     if (part is Inhouse inhousePart)
                     {
-                        rowIndex = partsDataGridView.Rows.Add(inhousePart.PartID, inhousePart.Name, inhousePart.Price, inhousePart.InStock, inhousePart.Min, inhousePart.Max, inhousePart.MachineID);
+                        rowIndex = partsDataGridView.Rows.Add(inhousePart.PartID, inhousePart.Name, inhousePart.Price, inhousePart.InStock, inhousePart.Min, inhousePart.Max);
                     }
                     else if (part is Outsourced outsourcedPart)
                     {
-                        rowIndex = partsDataGridView.Rows.Add(outsourcedPart.PartID, outsourcedPart.Name, outsourcedPart.Price, outsourcedPart.InStock, outsourcedPart.Min, outsourcedPart.Max, outsourcedPart.CompanyName);
+                        rowIndex = partsDataGridView.Rows.Add(outsourcedPart.PartID, outsourcedPart.Name, outsourcedPart.Price, outsourcedPart.InStock, outsourcedPart.Min, outsourcedPart.Max);
                     }
                     if (rowIndex != -1) 
                     {
