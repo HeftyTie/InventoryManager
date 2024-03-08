@@ -86,7 +86,14 @@ namespace InventoryManager
                     Min = min,
                     MachineID = machineID
                 };
-                inventory.AddPart(newPart);
+                if(request == "Add Part")
+                {
+                    inventory.AddPart(newPart);
+                }
+                else if (request == "Modify Part")
+                {
+                    inventory.UpdatePart(partID, newPart);
+                }
             }
             else if (partIdOrNameTextBox.Text is string companyName)
             {
@@ -99,7 +106,14 @@ namespace InventoryManager
                     Min = min,
                     CompanyName = companyName
                 };
-                inventory.UpdatePart(partID ,newPart);
+                if (request == "Add Part")
+                {
+                    inventory.AddPart(newPart);
+                }
+                else if(request == "Modify Part")
+                {
+                    inventory.UpdatePart(partID, newPart);
+                }
             }
 
             this.Close();

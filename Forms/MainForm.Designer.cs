@@ -271,7 +271,7 @@ namespace InventoryManager
             // 
             this.mainProductsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainProductsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainProductsSearchBox.Location = new System.Drawing.Point(281, 2);
+            this.mainProductsSearchBox.Location = new System.Drawing.Point(274, 2);
             this.mainProductsSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchBox.MinimumSize = new System.Drawing.Size(161, 22);
             this.mainProductsSearchBox.Name = "mainProductsSearchBox";
@@ -296,13 +296,13 @@ namespace InventoryManager
             this.ProductPrice,
             this.ProductMin,
             this.ProductMax});
-            this.productsDataGridView.Location = new System.Drawing.Point(6, 34);
+            this.productsDataGridView.Location = new System.Drawing.Point(3, 34);
             this.productsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.productsDataGridView.Name = "productsDataGridView";
             this.productsDataGridView.ReadOnly = true;
             this.productsDataGridView.RowHeadersVisible = false;
             this.productsDataGridView.RowHeadersWidth = 51;
-            this.productsDataGridView.Size = new System.Drawing.Size(431, 188);
+            this.productsDataGridView.Size = new System.Drawing.Size(432, 188);
             this.productsDataGridView.TabIndex = 21;
             // 
             // ProductID
@@ -344,7 +344,7 @@ namespace InventoryManager
             // AddProductButton
             // 
             this.AddProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddProductButton.Location = new System.Drawing.Point(212, 232);
+            this.AddProductButton.Location = new System.Drawing.Point(210, 232);
             this.AddProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddProductButton.Name = "AddProductButton";
             this.AddProductButton.Size = new System.Drawing.Size(72, 32);
@@ -357,7 +357,7 @@ namespace InventoryManager
             // ModifyProductButton
             // 
             this.ModifyProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModifyProductButton.Location = new System.Drawing.Point(289, 232);
+            this.ModifyProductButton.Location = new System.Drawing.Point(287, 232);
             this.ModifyProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.ModifyProductButton.Name = "ModifyProductButton";
             this.ModifyProductButton.Size = new System.Drawing.Size(72, 32);
@@ -371,7 +371,7 @@ namespace InventoryManager
             // 
             this.mainProductsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainProductsSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainProductsSearchButton.Location = new System.Drawing.Point(211, 0);
+            this.mainProductsSearchButton.Location = new System.Drawing.Point(204, 0);
             this.mainProductsSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchButton.Name = "mainProductsSearchButton";
             this.mainProductsSearchButton.Size = new System.Drawing.Size(51, 28);
@@ -384,7 +384,7 @@ namespace InventoryManager
             // 
             this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ExitButton.Location = new System.Drawing.Point(395, 269);
+            this.ExitButton.Location = new System.Drawing.Point(393, 269);
             this.ExitButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(40, 32);
@@ -396,7 +396,7 @@ namespace InventoryManager
             // DeleteProductButton
             // 
             this.DeleteProductButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteProductButton.Location = new System.Drawing.Point(366, 232);
+            this.DeleteProductButton.Location = new System.Drawing.Point(364, 232);
             this.DeleteProductButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteProductButton.Name = "DeleteProductButton";
             this.DeleteProductButton.Size = new System.Drawing.Size(72, 32);

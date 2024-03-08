@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,11 @@ namespace InventoryManager
                 productMinTextBox,
             };
 
+            if(request == "Modify Product")
+            {
+                LoadAssociatedPartsIntoGrid(productID);
+            }
+
             Methods.PopulateUserInputFields(request, productID, list, ProductLabel);
 
             // Make productIdTextBox read-only
@@ -59,19 +65,19 @@ namespace InventoryManager
 
             // Note: We are using a List<Control> here because the foreach loop was not working
             // Create a list to hold all TextBox controls
-            List<Control> controls = new List<Control>();
-
-            // Add TextBox controls to the list
-            controls.Add(productNameTextBox);
-            controls.Add(productInventoryTextBox);
-            controls.Add(productPriceCostTextBox);
-            controls.Add(productMaxTextBox);
-            controls.Add(productMinTextBox);
+            List<TextBox> textBoxes = new List<TextBox>
+            {
+                productNameTextBox,
+                productInventoryTextBox,
+                productPriceCostTextBox,
+                productMaxTextBox,
+                productMinTextBox
+            };
 
             // Attach event handlers to each TextBox control
-            foreach (TextBox textBox in controls.OfType<TextBox>())
+            foreach (TextBox textBox in textBoxes)
             {
-                textBox.TextChanged += (sender, e) => Validations.ValidateTextBoxes(Controls, SaveButton);
+                textBox.TextChanged += (sender, e) => SaveButton.Enabled = Validations.ValidateTextBoxes(textBoxes);
             }
 
             candidatePartsGridView.CellClick += (s, cellEventArgs) =>
@@ -108,19 +114,29 @@ namespace InventoryManager
             };
 
             int productID = Int32.Parse(productIdTextBox.Text);
-            if (ProductLabel.Text == "Add Product")
-            {
-                inventory.AddProduct(newProduct);
-            }
-            else if (ProductLabel.Text == "Modify Product")
-            {
-                inventory.UpdateProduct(productID, newProduct);
-            }
 
-            product.SaveAssociatedPartsToDB(productID, productNameTextBox.Text);
-            this.Close();
-            mainForm.RefreshDataGrid();
-            mainForm.Show();
+            if (associatedPartsGridView != null && associatedPartsGridView.RowCount > 0)
+            {
+                if (ProductLabel.Text == "Add Product")
+                {
+                    inventory.AddProduct(newProduct);
+                    product.SaveAssociatedPartsToDB(productID, productNameTextBox.Text);
+                }
+                else if (ProductLabel.Text == "Modify Product")
+                {
+                    inventory.UpdateProduct(productID, newProduct);
+
+                    List<int> newAssociatedProducts = GetFirstColumnValuesFromGridView(associatedPartsGridView);
+                    product.UpdateAssociatedPartsToDB(productID, newAssociatedProducts);
+                }
+                this.Close();
+                mainForm.RefreshDataGrid();
+                mainForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("A product must have at least one associated part.", "Add Associated Part", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -232,6 +248,7 @@ namespace InventoryManager
                         RefreshProductsFormDataGrid();
                     }
                 }
+                SaveButton.Enabled = true;
             }
             else
             {
@@ -255,6 +272,7 @@ namespace InventoryManager
                     {
                         product.RemoveAssociatedPart(partID);
                         associatedPartsGridView.Rows.RemoveAt(rowIndex);
+                        SaveButton.Enabled = true;
                     }
                     catch (Exception ex)
                     {
@@ -288,6 +306,106 @@ namespace InventoryManager
                     candidatePartsGridView.Rows.Add(outsourcedPart.PartID, outsourcedPart.Name, outsourcedPart.Price, outsourcedPart.InStock, outsourcedPart.Min, outsourcedPart.Max, outsourcedPart.CompanyName);
                 }
             }
+        }
+
+        private void LoadAssociatedPartsIntoGrid(int productID)
+        {
+            associatedPartsGridView.Rows.Clear();
+
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+
+                string sql = @"
+                SELECT PartID 
+                FROM AssociatedParts
+                WHERE ProductID = @productID";
+
+                string sql2 = @"
+                SELECT P.PartID, P.Name, P.Price, P.InStock, P.Min, P.Max, 
+                       CASE
+                          WHEN P.MachineID IS NOT NULL THEN 'Inhouse'
+                          ELSE 'Outsourced'
+                       END AS Type,
+                       COALESCE(P.MachineID, P.CompanyName) AS MachineOrCompanyName
+                FROM Part P
+                WHERE P.PartID = @partID";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@productID", productID);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int partID = reader.GetInt32(reader.GetOrdinal("PartID"));
+
+                            using (var command2 = new SQLiteCommand(sql2, connection))
+                            {
+                                command2.Parameters.AddWithValue("@partID", partID);
+
+                                using (var reader2 = command2.ExecuteReader())
+                                {
+                                    while (reader2.Read())
+                                    {
+                                        int partID2 = reader2.GetInt32(reader2.GetOrdinal("PartID"));
+                                        string name = reader2.GetString(reader2.GetOrdinal("Name"));
+                                        decimal price = reader2.GetDecimal(reader2.GetOrdinal("Price"));
+                                        int inStock = reader2.GetInt32(reader2.GetOrdinal("InStock"));
+                                        int min = reader2.GetInt32(reader2.GetOrdinal("Min"));
+                                        int max = reader2.GetInt32(reader2.GetOrdinal("Max"));
+                                        string type = reader2.GetString(reader2.GetOrdinal("Type"));
+                                        object machineOrCompanyName = reader2.GetValue(reader2.GetOrdinal("MachineOrCompanyName"));
+
+                                        if (type == "Inhouse")
+                                        {
+                                            int machineID = Convert.ToInt32(machineOrCompanyName);
+                                            associatedPartsGridView.Rows.Add(partID2, name, price, inStock, min, max, type, machineID);
+                                        }
+                                        else
+                                        {
+                                            string companyName = Convert.ToString(machineOrCompanyName);
+                                            associatedPartsGridView.Rows.Add(partID2, name, price, inStock, min, max, type, companyName);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private IEnumerable<TextBox> FindTextBoxes(Control container)
+        {
+            var textBoxes = container.Controls.OfType<TextBox>();
+
+            foreach (var subContainer in container.Controls.OfType<Control>())
+            {
+                textBoxes = textBoxes.Concat(FindTextBoxes(subContainer));
+            }
+
+            return textBoxes;
+        }
+
+        private List<int> GetFirstColumnValuesFromGridView(DataGridView gridView)
+        {
+            List<int> firstColumnValues = new List<int>();
+
+            foreach (DataGridViewRow row in gridView.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    int partID;
+                    if (int.TryParse(row.Cells[0].Value?.ToString(), out partID))
+                    {
+                        firstColumnValues.Add(partID);
+                    }
+                }
+            }
+
+            return firstColumnValues;
         }
     }
 }

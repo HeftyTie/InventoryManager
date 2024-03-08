@@ -148,5 +148,84 @@ namespace InventoryManager.Classes
                 }
             }
         }
+
+        public void UpdateAssociatedPartsToDB(int productID, List<int> newAssociatedProducts)
+        {
+            List<int> existingAssociatedPartIDs = GetAssociatedPartIDs(productID);
+
+            // Add new associated parts
+            foreach (var associatedPart in AssociatedParts)
+            {
+                if (!existingAssociatedPartIDs.Contains(associatedPart.PartID))
+                {
+                    InsertAssociatedPart(productID, associatedPart.PartID);
+                }
+            }
+
+            List<int> partsToRemove = existingAssociatedPartIDs.Except(newAssociatedProducts).ToList();
+
+            foreach (int partIDToRemove in partsToRemove)
+            {
+                DeleteAssociatedPart(productID, partIDToRemove);
+            }
+
+        }
+
+        private List<int> GetAssociatedPartIDs(int productID)
+        {
+            List<int> associatedPartIDs = new List<int>();
+
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+                string sql = @"SELECT PartID FROM AssociatedParts WHERE ProductID = @ProductID";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@ProductID", productID);
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            associatedPartIDs.Add(reader.GetInt32(0));
+                        }
+                    }
+                }
+            }
+
+            return associatedPartIDs;
+        }
+
+        private void InsertAssociatedPart(int productID, int partID)
+        {
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+                string sql = @"INSERT INTO AssociatedParts (ProductID, PartID) VALUES (@ProductID, @PartID)";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@ProductID", productID);
+                    command.Parameters.AddWithValue("@PartID", partID);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void DeleteAssociatedPart(int productID, int partID)
+        {
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+                string sql = @"DELETE FROM AssociatedParts WHERE ProductID = @ProductID AND PartID = @PartID";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@ProductID", productID);
+                    command.Parameters.AddWithValue("@PartID", partID);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

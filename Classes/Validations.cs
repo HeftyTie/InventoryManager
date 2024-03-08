@@ -75,11 +75,21 @@ namespace InventoryManager.Classes
         //Validate user fills all textboxes
         public static void ValidateTextBoxes(Control.ControlCollection controls, Button saveButton)
         {
-            bool allTextBoxesFilled = controls.OfType<TextBox>()
-                                               .Where(textBox => textBox.Visible)
-                                               .All(textBox => !string.IsNullOrWhiteSpace(textBox.Text));
+            bool allTextBoxesFilled = controls.OfType<TextBox>().All(textBox => !string.IsNullOrWhiteSpace(textBox.Text));
 
             saveButton.Enabled = allTextBoxesFilled;
+        }
+
+        public static bool ValidateTextBoxes(List<TextBox> textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    return false; // Return false if any TextBox is null or empty
+                }
+            }
+            return true; // Return true if all TextBoxes are filled
         }
     }
 }
