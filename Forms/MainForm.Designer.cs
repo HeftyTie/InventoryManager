@@ -271,7 +271,7 @@ namespace InventoryManager
             // 
             this.mainProductsSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainProductsSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainProductsSearchBox.Location = new System.Drawing.Point(276, 2);
+            this.mainProductsSearchBox.Location = new System.Drawing.Point(280, 2);
             this.mainProductsSearchBox.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchBox.MinimumSize = new System.Drawing.Size(161, 22);
             this.mainProductsSearchBox.Name = "mainProductsSearchBox";
@@ -302,7 +302,7 @@ namespace InventoryManager
             this.productsDataGridView.ReadOnly = true;
             this.productsDataGridView.RowHeadersVisible = false;
             this.productsDataGridView.RowHeadersWidth = 51;
-            this.productsDataGridView.Size = new System.Drawing.Size(432, 188);
+            this.productsDataGridView.Size = new System.Drawing.Size(430, 188);
             this.productsDataGridView.TabIndex = 21;
             // 
             // ProductID
@@ -371,13 +371,14 @@ namespace InventoryManager
             // 
             this.mainProductsSearchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainProductsSearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mainProductsSearchButton.Location = new System.Drawing.Point(206, 0);
+            this.mainProductsSearchButton.Location = new System.Drawing.Point(210, 0);
             this.mainProductsSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.mainProductsSearchButton.Name = "mainProductsSearchButton";
             this.mainProductsSearchButton.Size = new System.Drawing.Size(51, 28);
             this.mainProductsSearchButton.TabIndex = 7;
             this.mainProductsSearchButton.Text = "Search";
             this.mainProductsSearchButton.UseVisualStyleBackColor = true;
+            this.mainProductsSearchButton.Click += new System.EventHandler(this.mainProductsSearchButton_Click);
             // 
             // ExitButton
             // 
@@ -416,7 +417,6 @@ namespace InventoryManager
             this.MinimumSize = new System.Drawing.Size(919, 404);
             this.Name = "Main_Screen";
             this.Text = "Main Screen";
-            this.Load += new System.EventHandler(this.Main_Screen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.partsDataGridView)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.IO.Ports;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace InventoryManager
@@ -16,11 +17,7 @@ namespace InventoryManager
         public Main_Screen()
         {
             InitializeComponent();
-        }
 
-        private void Main_Screen_Load(object sender, EventArgs e)
-        {
-            // Refresh data grid
             RefreshDataGrid();
 
             // Setup CellClick event handler
@@ -41,6 +38,9 @@ namespace InventoryManager
                     productsDataGridView.Rows[cellEventArgs.RowIndex].Selected = true;
                 }
             };
+
+            mainPartsSearchBox.KeyPress += Validations.IntValidation;
+            mainProductsSearchBox.KeyPress += Validations.IntValidation;
         }
 
         private void AddPartButton_Click(object sender, EventArgs e)
@@ -107,8 +107,37 @@ namespace InventoryManager
 
         private void mainPartsSearchButton_Click(object sender, EventArgs e)
         {
-            var part = mainPartsSearchButton.Text;
-
+            try
+            {
+                int partID = Int32.Parse(mainPartsSearchBox.Text);
+                Part part = inventory.LookupPart(partID);
+                int rowIndex = -1; 
+                if (part != null)
+                {
+                    partsDataGridView.Rows.Clear();
+                    if (part is Inhouse inhousePart)
+                    {
+                        rowIndex = partsDataGridView.Rows.Add(inhousePart.PartID, inhousePart.Name, inhousePart.Price, inhousePart.InStock, inhousePart.Min, inhousePart.Max, inhousePart.MachineID);
+                    }
+                    else if (part is Outsourced outsourcedPart)
+                    {
+                        rowIndex = partsDataGridView.Rows.Add(outsourcedPart.PartID, outsourcedPart.Name, outsourcedPart.Price, outsourcedPart.InStock, outsourcedPart.Min, outsourcedPart.Max, outsourcedPart.CompanyName);
+                    }
+                    if (rowIndex != -1) 
+                    {
+                        partsDataGridView.Rows[rowIndex].Selected = true;
+                    }
+                    mainPartsSearchBox.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("No part found with the provided ID.", "Part Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid part ID. Please enter a valid integer.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void AddProductButton_Click(object sender, EventArgs e)
@@ -116,7 +145,6 @@ namespace InventoryManager
             ProductsForm form = new ProductsForm("Add Product", 0, this);
             form.ShowDialog();
         }
-
 
         private void ModifyProductButton_Click(object sender, EventArgs e)
         {
@@ -165,6 +193,30 @@ namespace InventoryManager
             }
         }
 
+        private void mainProductsSearchButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int productID = Int32.Parse(mainProductsSearchBox.Text);
+                Product product = inventory.LookupProduct(productID);
+                if (product != null)
+                {
+                    productsDataGridView.Rows.Clear();
+                    int rowIndex = productsDataGridView.Rows.Add(product.ProductID, product.Name, product.Price, product.InStock, product.Min, product.Max);
+                    productsDataGridView.Rows[rowIndex].Selected = true;
+                    mainProductsSearchBox.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("No product found with the provided ID.", "Product Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid product ID. Please enter a valid integer.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -198,10 +250,7 @@ namespace InventoryManager
             {
                 productsDataGridView.Rows.Add(product.ProductID, product.Name, product.Price, product.InStock, product.Min, product.Max);
             }
-
             this.Update();
         }
-
-
     }
 }

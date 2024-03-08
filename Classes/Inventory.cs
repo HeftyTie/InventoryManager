@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO.Ports;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -28,13 +29,71 @@ namespace InventoryManager.Classes
 
         public bool RemoveProduct(int productId)
         {
-            return false;
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    string sql = @"
+                    DELETE FROM [Product] 
+                    WHERE ProductID = @productID;
+
+                    UPDATE [Product] 
+                    SET ProductID = ProductID - 1 
+                    WHERE ProductID > @deletedProductID;";
+
+                    using (var command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@productID", productId);
+                        command.Parameters.AddWithValue("@deletedProductID", productId);
+                        command.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                }
+            }
+
+            return true;
         }
 
         public Product LookupProduct(int productId)
         {
-            return null; 
+            Product product = null; 
+
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+
+                string sql = @"
+                            SELECT * 
+                            FROM [Product] 
+                            WHERE ProductID = @productID";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@productID", productId); 
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            product = new Product
+                            {
+                                ProductID = Convert.ToInt32(reader["ProductID"]),
+                                Name = reader["Name"].ToString(),
+                                Price = Convert.ToDecimal(reader["Price"]),
+                                InStock = Convert.ToInt32(reader["InStock"]),
+                                Min = Convert.ToInt32(reader["Min"]),
+                                Max = Convert.ToInt32(reader["Max"])
+                            };
+                        }
+                    }
+                }
+            }
+            return product;
         }
+
 
         public void UpdateProduct(int productId, Product product) 
         {
@@ -61,37 +120,89 @@ namespace InventoryManager.Classes
 
         public bool DeletePart(Part part)
         {
-            using (var _connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
             {
-                _connection.Open();
+                connection.Open();
 
-                using (var transaction = _connection.BeginTransaction())
+                using (var transaction = connection.BeginTransaction())
                 {
-                    string deleteSql = "DELETE FROM [Part] WHERE PartID = @partID";
-                    string updateSql = "UPDATE [Part] SET PartID = PartID - 1 WHERE PartID > @deletedPartID";
+                    string sql = @"
+                    DELETE FROM [Part] 
+                    WHERE PartID = @partID;
 
-                    using (var command = new SQLiteCommand(deleteSql, _connection))
+                    UPDATE [Part] 
+                    SET PartID = PartID - 1 
+                    WHERE PartID > @deletedPartID;";
+
+                    using (var command = new SQLiteCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@partID", part.PartID);
+                        command.Parameters.AddWithValue("@deletedPartID", part.PartID);
                         command.ExecuteNonQuery();
-
-                        using (var updateCommand = new SQLiteCommand(updateSql, _connection))
-                        {
-                            updateCommand.Parameters.AddWithValue("@deletedPartID", part.PartID);
-                            updateCommand.ExecuteNonQuery();
-                        }
-
-                        transaction.Commit();
                     }
+
+                    transaction.Commit();
                 }
             }
-            return true; 
+
+            return true;
         }
+
 
         public Part LookupPart(int partId)
         {
-            return null;
+            Part part = null;
+
+            using (var connection = new SQLiteConnection("Data Source=Data/Inventory.db;Version=3;"))
+            {
+                connection.Open();
+
+                string sql = @"
+                    SELECT * 
+                    FROM [Part] 
+                    WHERE PartID = @partID";
+
+                using (var command = new SQLiteCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@partID", partId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            if (!reader.IsDBNull(reader.GetOrdinal("MachineID")))
+                            {
+                                part = new Inhouse
+                                {
+                                    PartID = partId,
+                                    Name = reader["Name"].ToString(),
+                                    Price = Convert.ToDecimal(reader["Price"]),
+                                    InStock = Convert.ToInt32(reader["InStock"]),
+                                    Min = Convert.ToInt32(reader["Min"]),
+                                    Max = Convert.ToInt32(reader["Max"]),
+                                    MachineID = Convert.ToInt32(reader["MachineID"])
+                                };
+                            }
+                            else if (!reader.IsDBNull(reader.GetOrdinal("CompanyName")))
+                            {
+                                part = new Outsourced
+                                {
+                                    PartID = partId,
+                                    Name = reader["Name"].ToString(),
+                                    Price = Convert.ToDecimal(reader["Price"]),
+                                    InStock = Convert.ToInt32(reader["InStock"]),
+                                    Min = Convert.ToInt32(reader["Min"]),
+                                    Max = Convert.ToInt32(reader["Max"]),
+                                    CompanyName = reader["CompanyName"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            return part;
         }
+
 
         public void UpdatePart(int partId, Part part)
         {

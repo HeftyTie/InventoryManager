@@ -110,6 +110,7 @@ namespace InventoryManager
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            mainForm.RefreshDataGrid();
             mainForm.Show();
         }
 
