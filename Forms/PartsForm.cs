@@ -69,7 +69,6 @@ namespace InventoryManager
             {
                 OutsourcedRadioButton.Checked = true;
             }
-
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
