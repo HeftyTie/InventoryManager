@@ -115,28 +115,21 @@ namespace InventoryManager
 
             int productID = Int32.Parse(productIdTextBox.Text);
 
-            if (associatedPartsGridView != null && associatedPartsGridView.RowCount > 0)
+            if (ProductLabel.Text == "Add Product")
             {
-                if (ProductLabel.Text == "Add Product")
-                {
-                    inventory.AddProduct(newProduct);
-                    product.SaveAssociatedPartsToDB(productID, productNameTextBox.Text);
-                }
-                else if (ProductLabel.Text == "Modify Product")
-                {
-                    inventory.UpdateProduct(productID, newProduct);
+                inventory.AddProduct(newProduct);
+                product.SaveAssociatedPartsToDB(productID, productNameTextBox.Text);
+            }
+            else if (ProductLabel.Text == "Modify Product")
+            {
+                inventory.UpdateProduct(productID, newProduct);
 
-                    List<int> newAssociatedProducts = GetFirstColumnValuesFromGridView(associatedPartsGridView);
-                    product.UpdateAssociatedPartsToDB(productID, newAssociatedProducts);
-                }
-                this.Close();
-                mainForm.RefreshDataGrid();
-                mainForm.Show();
+                List<int> newAssociatedProducts = GetFirstColumnValuesFromGridView(associatedPartsGridView);
+                product.UpdateAssociatedPartsToDB(productID, newAssociatedProducts);
             }
-            else
-            {
-                MessageBox.Show("A product must have at least one associated part.", "Add Associated Part", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.Close();
+            mainForm.RefreshDataGrid();
+            mainForm.Show();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
