@@ -45,7 +45,6 @@ namespace InventoryManager
             // Attach event handlers
             InHouseRadioButton.CheckedChanged += RadioButton_CheckedChanged;
             OutsourcedRadioButton.CheckedChanged += RadioButton_CheckedChanged;
-            partNameTextBox.KeyPress += Validations.StringValidation;
             partInventoryTextBox.KeyPress += Validations.IntValidation;
             partPriceCostTextBox.KeyPress += Validations.DecimalValidation;
             partMaxTextBox.KeyPress += Validations.IntValidation;

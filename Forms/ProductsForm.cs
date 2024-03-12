@@ -53,7 +53,6 @@ namespace InventoryManager
             productIdTextBox.ReadOnly = true;
 
             // Attach event handlers
-            productNameTextBox.KeyPress += Validations.StringValidation;
             productInventoryTextBox.KeyPress += Validations.IntValidation;
             productPriceCostTextBox.KeyPress += Validations.DecimalValidation;
             productMaxTextBox.KeyPress += Validations.IntValidation;
