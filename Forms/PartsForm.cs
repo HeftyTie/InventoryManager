@@ -60,8 +60,18 @@ namespace InventoryManager
             // Disable SaveButton initially
             SaveButton.Enabled = false;
 
-            InHouseRadioButton.Checked = true;
+            string text = partIdOrNameTextBox.Text;
+            if (int.TryParse(text, out _))
+            {
+                InHouseRadioButton.Checked = true;
+            }
+            else
+            {
+                OutsourcedRadioButton.Checked = true;
+            }
+
         }
+
         private void SaveButton_Click(object sender, EventArgs e)
         {
             Inventory inventory = new Inventory();
@@ -144,7 +154,7 @@ namespace InventoryManager
             {
                 partIdOrNameLabel.Text = "Company Name";
                 partIdOrNameLabel.Location = new Point(17, 254);
-                if (partIdOrNameTextBox.Text is string)
+                if (partIdOrNameTextBox.Text.GetType() != typeof(string))
                 {
                     partIdOrNameTextBox.Text = "";
                 }
